@@ -16,7 +16,6 @@ router.post('/', (req, res) => {
 
   db.query(sql, values, (error, result) => {
     if (error) throw error;
-    console.log()
     if (result.length > 0) {
       req.session.user = result[0];
       res.send("<script>alert('로그인 되었습니다.'); location.href ='/' </script>");
