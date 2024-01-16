@@ -3,12 +3,18 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const router = require('./routes/index.js');
+const expressLayout = require('express-ejs-layouts');
 
-app.set("views", "./views");
-app.set("view engine", "ejs");
 
 app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressLayout);
+
+app.set("layout", 'layout');
+app.set("layout extractScripts",true);
+
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
 var maxAge = 60 * 60 * 1000;
 

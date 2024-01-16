@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../../lib/db.js');
 
 router.get('/', (req, res) => {
-  res.render("login");
+  res.render("login", { layout: false });
 })
 
 router.post('/', (req, res) => {
@@ -23,9 +23,7 @@ router.post('/', (req, res) => {
     else {
       res.send("<script>alert('잘못된 정보입니다.');location.href ='/login' </script>");
     }
-
   });
 })
-
 
 module.exports = router;
