@@ -1,0 +1,133 @@
+<div class="container-fluid px-4">
+    <h4 class="mt-2"></h4>
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    실시간 공정 현황
+                </div>
+                <div class="card-body dashboard-card-body"><img src="/image/modeling_size.png" class="img"
+                        style="width: 100%; height: 230px; "></div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area me-1"></i>
+                    창고 적재 현황
+                </div>
+                <div class="card-body dashboard-card-body"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    금일 생산량
+                </div>
+                <div class="card-body dashboard-card-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="row"> <canvas id="goods"></canvas></div>
+                            <div class="row mt-3">
+                                <div style="text-align:  center; font-weight: bold;">양품</div>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="row"> <canvas id="defects"></canvas></div>
+                            <div class="row mt-3">
+                                <div style="text-align:  center; font-weight: bold;">불량품</div>
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <div class="row"> <canvas id="all"></canvas></div>
+                            <div class="row mt-3">
+                                <div style="text-align:  center; font-weight: bold;">전체</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    금일 불량 현황
+                </div>
+                <div class="card-body dashboard-card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>모듈 번호</th>
+                                <th>모듈 이름</th>
+                                <th>불량 내역</th>
+                                <th>발생 일시</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>abc-00001</td>
+                                <td>모듈 A</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:23:15</td>
+                            </tr>
+                            <tr>
+                                <td>abc-00002</td>
+                                <td>모듈 B</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:25:15</td>
+                            </tr>
+                            <tr>
+                                <td>abc-00002</td>
+                                <td>모듈 B</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:25:15</td>
+                            </tr>
+                            <tr>
+                                <td>abc-00002</td>
+                                <td>모듈 B</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:25:15</td>
+                            </tr>
+                            <tr>
+                                <td>abc-00002</td>
+                                <td>모듈 B</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:25:15</td>
+                            </tr>
+                            <tr>
+                                <td>abc-00002</td>
+                                <td>모듈 B</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:25:15</td>
+                            </tr>
+                            <tr>
+                                <td>abc-00002</td>
+                                <td>모듈 B</td>
+                                <td>용접 불량</td>
+                                <td>2024-01-17 16:25:15</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+        <script type="text/javascript" charset="utf-8"
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script type="text/javascript"></script>
+        <script src="/js/home/dashboard.js" defer></script>

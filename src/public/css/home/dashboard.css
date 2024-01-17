@@ -1,0 +1,6 @@
+.dashboard-card-body
+{
+    height: 300px;
+    overflow-y: auto;
+}
+
