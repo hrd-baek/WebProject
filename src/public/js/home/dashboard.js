@@ -1,47 +1,21 @@
 var num = Math.random();
 var data = {
     labels: [
-        "pink"
+        "양품",
+        "불량품"
     ],
     datasets: [
         {
+            labels: [
+                '양품',
+                '불량품'
+              ],
             data: [num, 1 - num],
             backgroundColor: [
                 "#f7e600"
             ],
             hoverBackgroundColor: [
                 "#f7e600"
-            ]
-        }]
-};
-var data2 = {
-    labels: [
-        "pink"
-    ],
-    datasets: [
-        {
-            data: [num, 1 - num],
-            backgroundColor: [
-                "#FF6384"
-            ],
-            hoverBackgroundColor: [
-                "#FF6384"
-            ]
-        }]
-};
-
-var data3 = {
-    labels: [
-        "pink"
-    ],
-    datasets: [
-        {
-            data: [num*2, 1 - num],
-            backgroundColor: [
-                "#00498c"
-            ],
-            hoverBackgroundColor: [
-                "#00498c"
             ]
         }]
 };
@@ -50,63 +24,16 @@ window.onload = function () {
     var ctx8 = $('#goods').get(0).getContext("2d");
     window.theChart8 = new Chart(ctx8, {
         type: 'doughnut',
+        
         data: data,
         options: {
             responsive: true,
             legend: {
-                display: false
+                display: false,
             },
             elements: {
                 center: {
                     text: Math.round(num * 100),
-                    fontStyle: 'Helvetica', //Default Arial 
-                    sidePadding: 15 //Default 20 (as a percentage) 
-                }
-            },
-            maintainAspectRatio: false,
-            cutoutPercentage: 70,
-            animation: false,
-            rotation: 1 * Math.PI,
-            circumference: 1 * Math.PI
-        }
-    });
-
-    var ctx9 = $('#defects').get(0).getContext("2d");
-    window.theChart8 = new Chart(ctx9, {
-        type: 'doughnut',
-        data: data2,
-        options: {
-            responsive: true,
-            legend: {
-                display: false
-            },
-            elements: {
-                center: {
-                    text: Math.round(num * 100),
-                    fontStyle: 'Helvetica', //Default Arial 
-                    sidePadding: 15 //Default 20 (as a percentage) 
-                }
-            },
-            maintainAspectRatio: false,
-            cutoutPercentage: 70,
-            animation: false,
-            rotation: 1 * Math.PI,
-            circumference: 1 * Math.PI
-        }
-    });
-
-    var ctx10 = $('#all').get(0).getContext("2d");
-    window.theChart8 = new Chart(ctx10, {
-        type: 'doughnut',
-        data: data3,
-        options: {
-            responsive: true,
-            legend: {
-                display: false
-            },
-            elements: {
-                center: {
-                    text: Math.round(num * 100*2),
                     fontStyle: 'Helvetica', //Default Arial 
                     sidePadding: 15 //Default 20 (as a percentage) 
                 }
@@ -119,7 +46,6 @@ window.onload = function () {
         }
     });
 }
-
 
 Chart.plugins.register({
     beforeDraw: function (chart) {

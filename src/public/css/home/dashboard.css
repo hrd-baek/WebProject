@@ -4,3 +4,19 @@
     overflow-y: auto;
 }
 
+.defects-table{
+    text-align: center;
+}
+
+
+.defects-table th{
+    font-size: 0.8rem;
+}
+
+.defects-table td{
+    font-size: 0.8rem;
+}
+
+.dashboard-table-body{
+    padding : 5px;
+}

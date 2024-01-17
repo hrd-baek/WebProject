@@ -1,7 +1,7 @@
 <div class="container-fluid px-4">
     <h4 class="mt-2"></h4>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-bar me-1"></i>
@@ -12,6 +12,11 @@
             </div>
         </div>
         <div class="col-6">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-area me-1"></i>
@@ -20,55 +25,38 @@
                 <div class="card-body dashboard-card-body"></div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-6">
+        <div class="col-xl-4">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-bar me-1"></i>
-                    금일 생산량
+                    생산량
                 </div>
                 <div class="card-body dashboard-card-body">
                     <div class="row">
-                        <div class="col-4">
-                            <div class="row"> <canvas id="goods"></canvas></div>
-                            <div class="row mt-3">
-                                <div style="text-align:  center; font-weight: bold;">양품</div>
-                            </div>
-
-                        </div>
-                        <div class="col-4">
-                            <div class="row"> <canvas id="defects"></canvas></div>
-                            <div class="row mt-3">
-                                <div style="text-align:  center; font-weight: bold;">불량품</div>
-                            </div>
-
-                        </div>
-                        <div class="col-4">
-                            <div class="row"> <canvas id="all"></canvas></div>
-                            <div class="row mt-3">
-                                <div style="text-align:  center; font-weight: bold;">전체</div>
-                            </div>
-
+                        <div class="row"> <canvas id="goods" style="height: 220px;"></canvas></div>
+                        <div class="row mt-3">
+                            <div style="text-align:  center; font-weight: bold;">생산량</div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-        <div class="col-xl-6">
+
+
+        <div class="col-xl-4">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-bar me-1"></i>
-                    금일 불량 현황
+                    불량 현황
                 </div>
-                <div class="card-body dashboard-card-body">
-                    <table class="table table-bordered">
+                <div class="card-body dashboard-card-body dashboard-table-body ">
+                    <table class="table table-bordered defects-table">
                         <thead>
                             <tr>
                                 <th>모듈 번호</th>
                                 <th>모듈 이름</th>
-                                <th>불량 내역</th>
+                                <th>불량 유형</th>
                                 <th>발생 일시</th>
 
                             </tr>
