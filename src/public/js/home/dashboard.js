@@ -29,7 +29,8 @@ window.onload = function () {
         options: {
             responsive: true,
             legend: {
-                display: false,
+                display: true,
+                position: 'bottom',
             },
             elements: {
                 center: {
