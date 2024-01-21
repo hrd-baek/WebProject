@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const router = require('./routes/index.js');
 const expressLayout = require('express-ejs-layouts');
-
+const mqtt = require('./mqtt.js');
 
 app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressLayout);
 
 app.set("layout", 'layout');
-app.set("layout extractScripts",true);
+app.set("layout extractScripts", true);
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 var maxAge = 60 * 60 * 1000;
 
 app.use(session({
-  secret: 'baek',
+  secret: 'finalproject',
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -30,7 +30,7 @@ app.use(session({
 
 app.use((req, res, next) => {
   res.locals.user = "";
-  if(req.session.user){
+  if (req.session.user) {
     res.locals.user = req.session.user
   }
   next()
