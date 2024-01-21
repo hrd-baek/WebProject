@@ -9,12 +9,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const id = req.body.id;
   const password = req.body.password;
-  var a = `${id} ${password}`;
 
   var sql = `select * from users where users_id = ? and password = ?;`;
   var values = [id, password];
 
   db.query(sql, values, (error, result) => {
+    console.log(sql);
     if (error) throw error;
     if (result.length > 0) {
       req.session.user = result[0];
