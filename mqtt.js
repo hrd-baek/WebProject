@@ -1,7 +1,7 @@
 const mqtt = require("mqtt")
 const client = mqtt.connect('mqtt://mqtt-dashboard.com:1883')
 
-const topic = 'final_project_team_4';
+const topic = 'hrd_final_project_team_4';
 // const message = {
 //   a: 1,
 //   b: 2
@@ -17,6 +17,7 @@ client.on('connect', () => {
   client.subscribe(topic); //topic 구독
   //구독해놓은 메시지가 들어오면 실행
   client.on("message", (topic, message) => {
-    console.log(topic, JSON.parse(message));
+    // console.log(topic, JSON.parse(message));
+    console.log(topic, "good");
   })
 })

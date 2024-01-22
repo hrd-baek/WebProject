@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const router = require('./routes/index.js');
 const expressLayout = require('express-ejs-layouts');
-const mqtt = require('./mqtt.js');
 
 app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.urlencoded({ extended: false }));

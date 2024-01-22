@@ -9,7 +9,7 @@ var data = {
             labels: [
                 '양품',
                 '불량품'
-              ],
+            ],
             data: [num, 1 - num],
             backgroundColor: [
                 "#f7e600"
@@ -24,7 +24,7 @@ window.onload = function () {
     var ctx8 = $('#goods').get(0).getContext("2d");
     window.theChart8 = new Chart(ctx8, {
         type: 'doughnut',
-        
+
         data: data,
         options: {
             responsive: true,
