@@ -11,3 +11,9 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+function addDays(date, days) {
+    const clone = new Date(date);
+    clone.setDate(date.getDate() + days)
+    return clone.toISOString().substring(0, 10);
+}

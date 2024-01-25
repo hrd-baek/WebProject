@@ -1,25 +1,39 @@
-body { 
-    font-size: 140%; 
-  }
-  
-  h2 {
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  table caption {
-    padding: .5em 0;
-  }
-  
-  table.dataTable th,
-  table.dataTable td {
-    white-space: nowrap;
-  }
-  
-  .p {
-    text-align: center;
-    padding-top: 140px;
-    font-size: 14px;
-  }
+.table_search {
+  position: relative;
+  width: 100%;
+}
 
-  div.container { max-width: 1200px }
+.table_search input {
+  width: 100%;
+  border: 1px solid #d2d6da;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.table_search img {
+  position: absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+  cursor: pointer;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
+  content: ">" !important;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before {
+  content: "∨" !important;
+}
+
+#defects_list_table tbody tr td,
+#production_list_table tbody tr td {
+  box-shadow: none;
+}
+
+#defects_list_table tbody tr td,
+#production_list_table tbody tr.even td {
+  background: rgb(184 179 179 / 5%);
+}

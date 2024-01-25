@@ -7,6 +7,13 @@ router.get('/list', (req, res) => {
     res.render("list");
 })
 
+router.post('/list', (req, res) => {
+    console.log(req.body);
+    const id = req.body.id;
+    const password = req.body.password;
+    console.log(id, password);
+})
+
 
 router.get('/defects', (req, res) => {
     res.locals.styleNo = 3;
@@ -15,7 +22,7 @@ router.get('/defects', (req, res) => {
 
 router.get('/cctv', (req, res) => {
     res.locals.styleNo = 4;
-    res.render("cctv");
+    res.render("cctv", { layout: false });
 })
 
 module.exports = router;

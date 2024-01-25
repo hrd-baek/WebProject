@@ -1,3 +1,33 @@
 .main_content {
     height: calc(100vh - 56px);
 }
+
+
+:root {
+    --primary-color: #4247d8;
+    --secondary-color: #00cc99;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+button {
+    background-color: var(--secondary-color);
+}
+
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon,
+.bg-gradient-primary {
+    background-color: var(--primary-color) !important;
+    background-image: none;
+
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+

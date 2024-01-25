@@ -1,0 +1,23 @@
+@media (min-width: 1200px) {
+    .select-col {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .select_date,
+    .search-select,
+    .search-form {
+        margin-bottom: 5px !important;
+    }
+
+    .search-select, .select_date {
+        text-align-last: center;
+        text-align: center;
+        -ms-text-align-last: center;
+        -moz-text-align-last: center;
+    }
+    
+}
