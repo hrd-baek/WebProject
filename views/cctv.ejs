@@ -1,0 +1,30 @@
+<div class="container-fluid px-4">
+    <h4 class="mt-2"></h4>
+    <div class="row">
+        <img id="img" style="width: 100%;">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar me-1"></i>
+                    실시간 공정 현황
+                </div>
+                <div class="card-body dashboard-card-body">
+                    <canvas style="height: 80vh;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+
+        </div>
+    </div>
+
+</div>
+<script src="/js/defects.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
+<script>
+    var client = new WebSocket('ws://localhost:9999');
+    var canvas = document.querySelector('canvas');
+    var player = new jsmpeg(client, {
+        canvas: canvas
+    });
+</script>

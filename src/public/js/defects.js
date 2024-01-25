@@ -6,9 +6,9 @@ window.addEventListener('DOMContentLoaded', event => {
         perPage: 15,
     };
 
-    const datatablesSimple = document.getElementById('datatablesSimple');
+    const datatablesSimple = document.getElementById('defects_list_table');
     if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple, options);
+        new simpleDatatables.DataTable(datatablesSimple);
     }
 });
 

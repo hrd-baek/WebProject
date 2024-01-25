@@ -8,10 +8,14 @@ router.get('/list', (req, res) => {
 })
 
 
-router.get('/defect', (req, res) => {
+router.get('/defects', (req, res) => {
     res.locals.styleNo = 3;
-    res.render("defect");
+    res.render("defects");
 })
 
+router.get('/cctv', (req, res) => {
+    res.locals.styleNo = 4;
+    res.render("cctv");
+})
 
 module.exports = router;

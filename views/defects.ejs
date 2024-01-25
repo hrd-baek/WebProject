@@ -1,6 +1,7 @@
 <div class="container-fluid px-4">
     <h4 class="mt-2"></h4>
     <div class="row">
+        <img id="img" style="width: 100%;">
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header">
@@ -8,7 +9,7 @@
                     불량 현황
                 </div>
                 <div class="card-body dashboard-card-body">
-                    <table id="datatablesSimple">
+                    <table id="defects_list_table">
                         <thead>
                             <tr>
                                 <th>모듈 번호</th>
@@ -21,14 +22,13 @@
                             <% for(var i=0; i<100; i++){ %>
                                 <tr>
                                     <td>abc-0000<%=i %>
-
                                     </td>
-                                    <% if(i%2==0) {%>
-                                        <td>모듈 A</td>
+                                    <% if(i%2==0) { %>
+                                        <td>모-A</td>
                                         <%} else{ %>
-                                            <td>모듈 B</td>
+                                            <td>모듈-B</td>
                                             <%} %>
-                                            <td>용접 불량</td>
+                                                <td>용접 불량</td>
                                                 <td>2024-01-17 16:23:15</td>
                                 </tr>
                                 <%} %>
@@ -41,6 +41,6 @@
 
         </div>
     </div>
-
+    <canvas></canvas>
 </div>
-<script src="/js/defect.js" defer></script>
+<script src="/js/defects.js" defer></script>

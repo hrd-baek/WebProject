@@ -11,8 +11,15 @@ router.get('/', (req, res) => {
   res.render("dashboard");
 })
 
+router.get('/group1', (req, res) => {
+  res.locals.styleNo = 100;
+  res.render("group1", { layout: false });
+})
+
+
 router.use('/login', loginRouter);
 router.use('/production', prodRouter);
+
 
 
 module.exports = router;

@@ -9,6 +9,7 @@ app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressLayout);
 
+
 app.set("layout", 'layout');
 app.set("layout extractScripts", true);
 
@@ -36,5 +37,26 @@ app.use((req, res, next) => {
 })
 
 app.use(router);
+
+Stream = require('node-rtsp-stream')
+stream = new Stream({
+  name: 'name',
+  streamUrl: 'rtsp://hrdfinalproject4:1q2w3e4r@192.168.1.115/stream1',
+  wsPort: 9999,
+  ffmpegOptions: { // options ffmpeg flags
+    '-stats': '', // an option with no neccessary value uses a blank string
+    '-r': 30 // options with required values specify the value after the key
+  }
+})
+stream2 = new Stream({
+  name: 'name2',
+  streamUrl: 'rtsp://asdf123:asdf123@192.168.1.111/stream1',
+  wsPort: 9900,
+  ffmpegOptions: { // options ffmpeg flags
+    '-stats': '', // an option with no neccessary value uses a blank string
+    '-r': 30 // options with required values specify the value after the key
+  }
+})
+
 
 module.exports = app;

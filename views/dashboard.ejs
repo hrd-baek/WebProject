@@ -1,119 +1,118 @@
 <div class="container-fluid px-4">
     <h4 class="mt-2"></h4>
     <div class="row first-row">
-        <div class="col-12">
+        <div class="col-xl-8">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-bar me-1"></i>
                     실시간 공정 현황
                 </div>
-                <div class="card-body dashboard-card-body"><img src="/image/view2.jpg" class="img"
-                        style="width: 100%; height: 40vh; "></div>
+                <div class="card-body dashboard-card-body">
+                    <div class="process_status">
+                        <img src="/image/view3.jpg" class="img process_default_img" style="width: 100%;"></img>
+                        <div class='process_unit process_unit_1'>
+                            <img src="/image/work_cell.png"></img>
+                        </div>
+                        <% for(var i=2; i<7; i++){ %>
+                            <div class='<%="process_unit process_unit_"+i %>'>
+                                <img src="/image/work_temp.png"></img>
+                            </div>
+                            <%} %>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-6">
-
-        </div>
-    </div>
-    <div class="row second-row">
-        <div class="col-xl-4 none-scrollbar">
+        <div class="col-xl-4">
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-area me-1"></i>
                     창고 적재 현황
                 </div>
-                <div class="card-body dashboard-card-body"><img src="/image/storage.jpg" class="img"
-                        style="width: 100%; height: 27vh; "></div>
+                <div class="card-body dashboard-card-body">
+                    <div class="storage_status">
+                        <img src="/image/storage2.png" class="img storage_default_img"></img>
+                        <div class="row storage_good">
+                            <% for(var i=1; i<4; i++){ %>
+                                <img src="/image/work.png" class='<%="storage_work storage_work_"+  i %>'></img>
+                                <%} %>
+                        </div>
+                        <div class="row storage_defects">
+                            <% for(var i=1; i<4; i++){ %>
+                                <img src="/image/work.png" class='<%="storage_work storage_work_"+  i %>'></img>
+                                <%} %>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <div class="col-xl-4 none-scrollbar">
+
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-bar me-1"></i>
                     생산량
                 </div>
                 <div class="card-body dashboard-card-body">
-                    <div class="row">
-                        <div class="row"> <canvas id="goods" style="height: 26vh;"></canvas></div>
-                        <div class="row mt-3">
-                            <!-- <div style="text-align:  center; font-weight: bold;">생산량</div> -->
-                        </div>
+                    <div class="row" style="height: 20vh;">
+                        <canvas id="goods" style="height: 100%;"></canvas> </canvFas>
+
                     </div>
 
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="col-xl-4">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-chart-bar me-1"></i>
-                    불량 현황
-                </div>
-                <div class="card-body dashboard-card-body dashboard-table-body ">
-                    <table class="table table-bordered defects-table">
-                        <thead>
-                            <tr>
-                                <th>모듈 번호</th>
-                                <th>모듈 이름</th>
-                                <th>불량 유형</th>
-                                <th>발생 일시</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>abc-00001</td>
-                                <td>모듈 A</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:23:15</td>
-                            </tr>
-                            <tr>
-                                <td>abc-00002</td>
-                                <td>모듈 B</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:25:15</td>
-                            </tr>
-                            <tr>
-                                <td>abc-00002</td>
-                                <td>모듈 B</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:25:15</td>
-                            </tr>
-                            <tr>
-                                <td>abc-00002</td>
-                                <td>모듈 B</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:25:15</td>
-                            </tr>
-                            <tr>
-                                <td>abc-00002</td>
-                                <td>모듈 B</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:25:15</td>
-                            </tr>
-                            <tr>
-                                <td>abc-00002</td>
-                                <td>모듈 B</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:25:15</td>
-                            </tr>
-                            <tr>
-                                <td>abc-00002</td>
-                                <td>모듈 B</td>
-                                <td>용접 불량</td>
-                                <td>2024-01-17 16:25:15</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+    <div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-bar me-1"></i>
+                불량 현황
+            </div>
+            <div class="card-body dashboard-card-body dashboard-table-body ">
+                <table class="table table-bordered defects-table">
+                    <thead>
+                        <tr>
+                            <th>모듈 번호</th>
+                            <th>모듈 이름</th>
+                            <th>불량 유형</th>
+                            <th>발생 일시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>abc-00001</td>
+                            <td>모듈 A</td>
+                            <td>용접 불량</td>
+                            <td>2024-01-17 16:23:15</td>
+                        </tr>
+                        <tr>
+                            <td>abc-00002</td>
+                            <td>모듈 B</td>
+                            <td>용접 불량</td>
+                            <td>2024-01-17 16:25:15</td>
+                        </tr>
+                        <tr>
+                            <td>abc-00002</td>
+                            <td>모듈 B</td>
+                            <td>용접 불량</td>
+                            <td>2024-01-17 16:25:15</td>
+                        </tr>
+                        <tr>
+                            <td>abc-00002</td>
+                            <td>모듈 B</td>
+                            <td>용접 불량</td>
+                            <td>2024-01-17 16:25:15</td>
+                        </tr>
+                        <tr>
+                            <td>abc-00002</td>
+                            <td>모듈 B</td>
+                            <td>용접 불량</td>
+                            <td>2024-01-17 16:25:15</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-
-
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -125,4 +124,8 @@
 <script src="/js/mqttws31-min.js" defer></script>
 <script src="/js/mqttws31.js" defer></script>
 <script src="/js/mqtt.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+<script>
+    function move() {
+        document.querySelector(".process_unit_2").classList.add("go_left");
+    }
+</script>
