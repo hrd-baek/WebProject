@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', event => {
         lengthChange: false,
         searching: false,
         responsive: true,
-        pageLength: 15,
+        pageLength: 10,
         language: {
             "emptyTable": "데이터가 없어요.",
             "lengthMenu": "페이지당 _MENU_ 개씩 보기",
