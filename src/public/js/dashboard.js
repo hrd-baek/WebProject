@@ -6,20 +6,22 @@
 // });
 
 
-let t = new Date();
+window.addEventListener('DOMContentLoaded', event => {
 
-let year = t.getFullYear(); // 년도
-let month = t.getMonth() + 1;  // 월
-let date = t.getDate();  // 날짜
-let day = t.getDay();  // 요일
+    let t = new Date();
 
-let today = (year + '년 ' + month + '월 ' + date + '일 ')
-document.getElementById("today-section").innerHTML = today;
+    let year = t.getFullYear(); // 년도
+    let month = t.getMonth() + 1;  // 월
+    let date = t.getDate();  // 날짜
+    let day = t.getDay();  // 요일
+    let today = (year + '년 ' + month + '월 ' + date + '일 ')
+    document.getElementById("today-section").innerHTML = today;
 
-var client = new WebSocket('ws://localhost:9999');
-var canvas = document.querySelector('canvas');
-var player = new jsmpeg(client, {
-    canvas: canvas
+    var client = new WebSocket('ws://192.168.0.94:9999');
+    var canvas = document.querySelector('canvas');
+    var player = new jsmpeg(client, {
+        canvas: canvas
+    });
 });
 
 function openPopupCCTV() {

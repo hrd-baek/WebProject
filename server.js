@@ -41,7 +41,7 @@ app.use(router);
 Stream = require('node-rtsp-stream')
 stream = new Stream({
   name: 'name',
-  streamUrl: 'rtsp://hrdfinalproject4:1q2w3e4r@192.168.1.115/stream1',
+  streamUrl: 'rtsp://hrdfinalproject4:1q2w3e4r@192.168.0.103/stream1',
   wsPort: 9999,
   ffmpegOptions: { // options ffmpeg flags
     '-stats': '', // an option with no neccessary value uses a blank string

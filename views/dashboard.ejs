@@ -195,147 +195,40 @@
                         <table class="table align-items-center mb-0  ">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">모듈
+
+                                    <th class="text-uppercase text-secondary font-weight-bolder opacity-7">모듈
                                         번호</th>
-                                    <th
-                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        모듈 코드</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+
+                                    <th class="text-center text-uppercase text-secondary  font-weight-bolder opacity-7">
                                         불량 유형</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
                                         발생 일시</th>
-                                    <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-00000</p>
+                                <% for(var i=0; i<defectsData.length; i++){ %>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <p class=" text-secondary mb-0">
+                                                        <%= defectsData[i].module_id %>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 A</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-17 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-0200</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 ㅠ</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-11 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-00000</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 A</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-17 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-0200</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 ㅠ</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-11 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-00000</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 A</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-17 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-0200</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 ㅠ</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-11 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-00000</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 A</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-17 16:23:15</p>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="font-weight-bold mb-0">
+                                                <%= defectsData[i].type %>
+                                            </p>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <p class="font-weight-bold mb-0">
+                                                <%= moment(defectsData[i].occur_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <%} %>
                             </tbody>
                         </table>
                     </div>
@@ -404,76 +297,53 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">모듈
-                                        번호</th>
-                                    <th
-                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    <th class="text-uppercase text-secondary font-weight-bolder opacity-7">
+                                        모듈 번호</th>
+                                    <th class="text-uppercase text-secondary font-weight-bolder opacity-7 ps-2">
                                         모듈 코드</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        불량 유형</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        발생 일시</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                        용접 </th>
+                                    <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                        전압</th>
+                                    <th class="text-center text-uppercase text-secondary font-weight-bolder opacity-7">
+                                        생산 일시</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-00000</p>
+                                <% for(var i=0; i<prodData.length; i++){ %>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <p class=" text-secondary mb-0">
+                                                        <%= prodData[i].module_id %>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 A</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-17 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-0200</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 ㅠ</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-11 16:23:15</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs text-secondary mb-0">abc-00000</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">모듈 A</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">용접 불량</p>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <p class="text-xs font-weight-bold mb-0">2024-01-17 16:23:15</p>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="font-weight-bold mb-0">
+                                                <%= prodData[i].module_type_id %>
+                                            </p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="font-weight-bold mb-0">
+                                                <%= prodData[i].defects %>
+                                            </p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="font-weight-bold mb-0">
+                                                <%= prodData[i].voltage %>
+                                            </p>
+                                        </td>
 
+                                        <td class="align-middle text-center">
+                                            <p class="font-weight-bold mb-0">
+                                                <%= moment(prodData[i].finish_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <%} %>
                         </table>
                     </div>
                 </div>
@@ -487,8 +357,10 @@
 <script type="text/javascript" charset="utf-8"
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script type="text/javascript"></script>
-<script src="/js/dashboard.js" defer></script>
+
 <script src="/js/mqttws31-min.js" defer></script>
 <script src="/js/mqttws31.js" defer></script>
 <script src="/js/mqtt.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
+
+<script src="/js/dashboard.js" defer></script>

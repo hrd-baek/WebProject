@@ -1,7 +1,7 @@
 <canvas style="width: 100%;"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
 <script>
-    var client = new WebSocket('ws://localhost:9999');
+    var client = new WebSocket('ws://192.168.0.94:9999');
     var canvas = document.querySelector('canvas');
     var player = new jsmpeg(client, {
         canvas: canvas

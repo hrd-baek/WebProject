@@ -48,7 +48,6 @@ function onMessageArrived(message) {
 
     const json = message.payloadString;
     const obj = JSON.parse(json);
-    console.log("cakked");
 
     processVisible(obj.X2, $(".process_unit_1"));
     processVisible(obj.X3, $(".process_unit_2"));
