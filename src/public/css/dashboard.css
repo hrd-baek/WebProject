@@ -51,7 +51,7 @@
 .process_unit_4 img,
 .process_unit_5 img,
 .process_unit_6 img {
-    width: 60px;
+    width: 40px;
     height: 25px;
 }
 
@@ -69,7 +69,7 @@
 .process_unit_3,
 .process_unit_4,
 .process_unit_6 {
-    top: 59%;
+    top: 58%;
 }
 
 .process_unit_5 {
@@ -95,12 +95,12 @@
 
 .storage_good .storage_work {
     position: absolute;
-    top: 10%;
+    top: 14%;
 }
 
 .storage_defects .storage_work {
     position: absolute;
-    top: 47%;
+    top: 51%;
 }
 
 .storage_good .storage_work_1,
@@ -127,44 +127,44 @@
 }
 
 .go_left_1 {
-    transform: translateX(-360%);
+    transform: translateX(-430%);
     transition-property: all;
-    transition-duration: 5s;
+    transition-duration: 2s;
     /* transition-delay: 1s; */
 }
 
 .go_left_2 {
-    transform: translateX(-770%);
+    transform: translateX(-930%);
     transition-property: all;
-    transition-duration: 5s;
+    transition-duration: 2s;
     /* transition-delay: 1s; */
 }
 
 .go_bottom_1 {
-    transform: translate(-770%, 350%);
+    transform: translate(-930%, 250%);
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     /* transition-delay: 1s; */
 }
 
 .go_top_1 {
-    transform: translate(-770%, 0%);
+    transform: translate(-930%, 0%);
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     /* transition-delay: 1s; */
 }
 
 .go_left_3 {
-    transform: translateX(-1050%);
+    transform: translateX(-1230%);
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     /* transition-delay: 1s; */
 }
 
 .go_top_2 {
-    transform: translate(-1050%, -720%);
+    transform: translate(-1230%, -480%);
     transition-property: all;
-    transition-duration: 3s;
+    transition-duration: 2s;
     /* transition-delay: 1s; */
 }
 
@@ -232,12 +232,12 @@
 
     .storage_good .storage_work {
         position: absolute;
-        top: 12%;
+        top: 13%;
     }
 
     .storage_defects .storage_work {
         position: absolute;
-        top: 49%;
+        top: 50%;
     }
 
 }

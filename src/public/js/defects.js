@@ -1,29 +1,41 @@
 
+var table = $('#defects_list_table').DataTable({
+    lengthChange: false,
+    searching: false,
+    responsive: true,
+    pageLength: 15,
+    language: language,
+    deferRender: true,
+    destroy: true,
+    rowId: "title",
+});
+
 function newTable(obj, data) {
-    if ($.fn.DataTable.isDataTable('table')) {
+    if ($.fn.DataTable.isDataTable('#defects_list_table')) {
         obj.DataTable().destroy();
     }
-    var table = $('table').DataTable({
+    var table = $('#defects_list_table').DataTable({
         columns: [
             { data: 'module_id', title: '모듈 번호' },
             { data: 'type', title: '불량 유형' },
-            { data: 'occur_time', title: '발생 일시' },
-
+            { data: 'occur_time', title: '발생 일시' }
         ],
         columnDefs: [
             {
                 targets: [2], render: function (data, type, row) {
                     return moment(data).format('YYYY-MM-DD hh:mm:ss');
                 }
-            }
+            },
+
         ],
         lengthChange: false,
         searching: false,
         responsive: true,
-        pageLength: 10,
+        pageLength: 15,
         data: data,
         language: language,
         deferRender: true,
+        destroy: true,
         rowId: "title",
     });
 }
@@ -40,7 +52,7 @@ function tableSearch() {
         option: option,
         input: input
     }
-    
+
     console.log(data);
     $.ajax({
         url: "/production/defects",

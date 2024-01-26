@@ -11,7 +11,7 @@
                             <input id="select_date" class="form-control select_date" />
                         </div>
                         <div class="col-xl-1 select-col" style="text-align: center;">
-                            <select class="form-select search-select" id ="search-select">
+                            <select class="form-select search-select" id="search-select">
                                 <option value="1" selected>모듈 번호</option>
                                 <option value="2">불량 유형</option>
                             </select>
@@ -19,7 +19,8 @@
                         <div class="col-xl-4" style="text-align: center;">
                             <div class="table_search">
                                 <input type="text" placeholder="검색어 입력" id="search-input">
-                                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" onclick="tableSearch()">
+                                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+                                    onclick="tableSearch()">
                             </div>
                         </div>
                     </div>
@@ -32,20 +33,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% for(var i=0; i<tableData.length; i++){ %>
-                                <tr>
-                                    <td>
-                                        <%= tableData[i].module_id %>
-                                    </td>
+                            <% if(tableData.length !=0){ %>
+                                <% for(var i=0; i<tableData.length; i++){ %>
+                                    <tr>
+                                        <td>
+                                            <%= tableData[i].module_id %>
+                                        </td>
 
-                                    <td>
-                                        <%= tableData[i].type %>
-                                    </td>
-                                    <td>
-                                        <%= moment(tableData[i].occur_time).format('YYYY-MM-DD hh:mm:ss') %>
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <%= tableData[i].type %>
+                                        </td>
+                                        <td>
+                                            <%= moment(tableData[i].occur_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                        </td>
+                                    </tr>
                                     <%} %>
+                                        <% } %>
+
                         </tbody>
                     </table>
                 </div>
@@ -53,5 +57,5 @@
         </div>
     </div>
 </div>
-<script src="/js/table.js" defer></script>
+<!-- <script src="/js/table.js" defer></script> -->
 <script src="/js/defects.js" defer></script>

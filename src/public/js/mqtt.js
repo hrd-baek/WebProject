@@ -51,6 +51,15 @@ function onMessageArrived(message) {
 
     processVisible(obj.X2, $(".process_unit_1"));
     processVisible(obj.X3, $(".process_unit_2"));
+    if (obj.X3) {
+
+        $('.process-icon-2').css({
+            "background-color": "green"
+        });
+        $('.process-icon-2-1').css({
+            "color": "white"
+        });
+    }
 
     if (obj.X8) {
         processVisible(true, $(".process_unit_2"));
@@ -66,7 +75,7 @@ function onMessageArrived(message) {
         processVisible(true, $(".process_unit_2"));
         document.querySelector(".process_unit_2").classList.add("go_bottom_1");
     }
-    
+
     if (obj.X14) {
         processVisible(true, $(".process_unit_2"));
         document.querySelector(".process_unit_2").classList.add("go_top_1");

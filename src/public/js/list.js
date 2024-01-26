@@ -1,9 +1,20 @@
 
+var table = $('#production_list_table').DataTable({
+    lengthChange: false,
+    searching: false,
+    responsive: true,
+    pageLength: 15,
+    language: language,
+    deferRender: true,
+    destroy: true,
+    rowId: "title",
+});
+
 function newTable(obj, data) {
-    if ($.fn.DataTable.isDataTable('table')) {
+    if ($.fn.DataTable.isDataTable('#production_list_table')) {
         obj.DataTable().destroy();
     }
-    var table = $('table').DataTable({
+    var table = $('#production_list_table').DataTable({
         columns: [
             { data: 'module_id', title: '모듈 번호' },
             { data: 'module_type_id', title: '모듈 이름' },
@@ -16,7 +27,8 @@ function newTable(obj, data) {
         columnDefs: [
             {
                 targets: [2], render: function (data, type, row) {
-                    return `<span class="badge badge-sm bg-secondary">Click</span>`;
+                    return `<span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">Click</span>`;
                 }
             },
             {
@@ -33,10 +45,11 @@ function newTable(obj, data) {
         lengthChange: false,
         searching: false,
         responsive: true,
-        pageLength: 10,
+        pageLength: 15,
         data: data,
         language: language,
         deferRender: true,
+        destroy: true,
         rowId: "title",
     });
 }
@@ -53,7 +66,7 @@ function tableSearch() {
         option: option,
         input: input
     }
-    
+
     $.ajax({
         url: "/production/list",
         type: "POST",

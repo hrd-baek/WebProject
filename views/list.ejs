@@ -47,7 +47,8 @@
                                     </td>
 
                                     <td>
-                                        <span class="badge badge-sm bg-secondary">Click</span>
+                                        <span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop">Click</span>
                                     </td>
 
                                     <td>
@@ -63,14 +64,34 @@
                                     <td>
                                         <%= moment(tableData[i].finish_time).format('YYYY-MM-DD hh:mm:ss') %>
                                     </td>
-                                    </tr>
-                                    <%} %>
+                                </tr>
+                                <%} %>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cell 정보</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    모듈 ~~에 포함된 셀은 ~~ 입니다.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="/js/table.js" defer></script>
+<!-- <script src="/js/table.js" defer></script> -->
 <script src="/js/list.js" defer></script>

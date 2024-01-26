@@ -34,14 +34,4 @@ const language = {
     }
 }
 
-var table = $('table').DataTable({
-    lengthChange: false,
-    searching: false,
-    responsive: true,
-    pageLength: 15,
-    language: language,
-    deferRender: true,
-    rowId: "title",
-});
-
 
