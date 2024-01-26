@@ -50,8 +50,49 @@ router.post('/list', (req, res) => {
 
 
 router.get('/defects', (req, res) => {
-    res.locals.styleNo = 3;
-    res.render("defects");
+    let startDate = common.getToday() + ' 00:00:00'
+    let endDate = common.getToday() + ' 23:59:59'
+    var sql = 'SELECT * FROM module_defects WHERE occur_time between ?  AND ? order by occur_time ;';
+    var values = [startDate, endDate];
+
+    db.query(sql, values, (error, result) => {
+        if (error) throw error;
+        if (result.length > 0) {
+            res.locals.styleNo = 3;
+            res.render("defects", { tableData: result, moment });
+        }
+        else {
+            console.log(result);
+        }
+    });
+
+})
+
+router.post('/defects', (req, res) => {
+    let startDate = req.body.startDate + ' 00:00:00'
+    let endDate = req.body.endDate + ' 23:59:59'
+    let option = req.body.option;
+    let input = req.body.input;
+
+
+    let sql= "";
+    let values = [startDate, endDate];
+    if (input == '') {
+        sql = 'SELECT * FROM module_defects WHERE occur_time BETWEEN ? AND ? ORDER BY occur_time';
+    }
+    else if (option == 1) {
+        sql = 'SELECT * FROM module_defects WHERE module_id LIKE ? AND occur_time BETWEEN ? AND ? ORDER BY occur_time';
+        values.unshift(`%${input}%`);
+    } else if (option == 2) {
+        sql = 'SELECT * FROM module_defects WHERE type LIKE ? AND occur_time BETWEEN ? AND ? ORDER BY occur_time';
+        values.unshift(`%${input}%`);
+    }
+
+    console.log(sql);
+    db.query(sql, values, (error, result) => {
+        if (error) throw error;
+        res.json(result);  
+    });
 })
 
 router.get('/cctv', (req, res) => {

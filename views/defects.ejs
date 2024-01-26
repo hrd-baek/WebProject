@@ -11,15 +11,15 @@
                             <input id="select_date" class="form-control select_date" />
                         </div>
                         <div class="col-xl-1 select-col" style="text-align: center;">
-                            <select class="form-select search-select">
+                            <select class="form-select search-select" id ="search-select">
                                 <option value="1" selected>모듈 번호</option>
-                                <option value="2">모듈 이름</option>
+                                <option value="2">불량 유형</option>
                             </select>
                         </div>
                         <div class="col-xl-4" style="text-align: center;">
                             <div class="table_search">
-                                <input type="text" placeholder="검색어 입력">
-                                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+                                <input type="text" placeholder="검색어 입력" id="search-input">
+                                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" onclick="tableSearch()">
                             </div>
                         </div>
                     </div>
@@ -27,35 +27,30 @@
                         <thead>
                             <tr>
                                 <th>모듈 번호</th>
-                                <th>모듈 이름</th>
                                 <th>불량 유형</th>
                                 <th>발생 일시</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% for(var i=0; i<100; i++){ %>
+                            <% for(var i=0; i<tableData.length; i++){ %>
                                 <tr>
-                                    <td>가나다-0000<%=i %>
+                                    <td>
+                                        <%= tableData[i].module_id %>
                                     </td>
-                                    <% if(i%2==0) {%>
-                                        <td>module-A</td>
-                                        <%} else{ %>
-                                            <td>module-B</td>
-                                            <%} %>
-                                                <td>36</td>
-                                                <td>2024-01-17 16:23:15</td>
-                                </tr>
-                                <%} %>
+
+                                    <td>
+                                        <%= tableData[i].type %>
+                                    </td>
+                                    <td>
+                                        <%= moment(tableData[i].occur_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                    </td>
+                                    <%} %>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-6">
-
-        </div>
     </div>
-    <canvas></canvas>
 </div>
 <script src="/js/table.js" defer></script>
 <script src="/js/defects.js" defer></script>
