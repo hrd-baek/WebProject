@@ -1,51 +1,71 @@
-window.addEventListener('DOMContentLoaded', event => {
 
+function newTable(obj, data) {
+    if ($.fn.DataTable.isDataTable('table')) {
+        obj.DataTable().destroy();
+    }
     var table = $('table').DataTable({
+        columns: [
+            { data: 'module_id', title: '모듈 번호' },
+            { data: 'module_type_id', title: '모듈 이름' },
+            { data: 'module_id', title: 'Cell 정보' },
+            { data: 'defects', title: '용접' },
+            { data: 'voltage', title: '전압' },
+            { data: 'storage', title: '창고' },
+            { data: 'finish_time', title: '생산 일시' },
+        ],
+        columnDefs: [
+            {
+                targets: [2], render: function (data, type, row) {
+                    return `<span class="badge badge-sm bg-secondary">Click</span>`;
+                }
+            },
+            {
+                targets: [3], render: function (data, type, row) {
+                    return data == 0 ? '양품' : '불량품';
+                }
+            },
+            {
+                targets: [6], render: function (data, type, row) {
+                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
+                }
+            }
+        ],
         lengthChange: false,
         searching: false,
         responsive: true,
         pageLength: 10,
-        language: {
-            "emptyTable": "데이터가 없어요.",
-            "lengthMenu": "페이지당 _MENU_ 개씩 보기",
-            "info": "현재 _START_ - _END_ / _TOTAL_건",
-            "infoEmpty": "데이터 없음",
-            "infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
-            // "search": "검색: ",
-            "search": "",
-            "zeroRecords": "일치하는 데이터가 없어요.",
-            "loadingRecords": "로딩중...",
-            "processing": "잠시만 기다려 주세요...",
-            "paginate": {
-                "next": "다음",
-                "previous": "이전"
-            }
-        },
+        data: data,
+        language: language,
         deferRender: true,
-        rowId: "title",        
+        rowId: "title",
     });
+}
 
-    $('#select_date').daterangepicker({
-        "locale": {
-            "format": "YYYY-MM-DD",
-            "separator": " ~ ",
-            "applyLabel": "확인",
-            "cancelLabel": "취소",
-            "fromLabel": "From",
-            "toLabel": "To",
-            "customRangeLabel": "Custom",
-            "weekLabel": "W",
-            "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
-            "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+function tableSearch() {
+    let startDate = $('#select_date').data('daterangepicker').startDate.format('YYYY-MM-DD');
+    let endDate = $('#select_date').data('daterangepicker').endDate.format('YYYY-MM-DD')
+    let option = $("#search-select option:selected").val();
+    let input = $("#search-input").val();
+    // if
+    let data = {
+        startDate: startDate,
+        endDate: endDate,
+        option: option,
+        input: input
+    }
+    
+    $.ajax({
+        url: "/production/list",
+        type: "POST",
+        async: false,
+        dataType: "json",
+        data: data,
+        success: function (res) {
+            newTable($('#production_list_table'), res);
         },
-        "startDate": new Date(),
-        "endDate": new Date(),
-        "drops": "auto"
+        error: function (xhr) {
+            alert(xhr);
+        }
     });
-
-    const d = new Date();
-    const yesterday = addDays(d, -2);
-    const today = addDays(d, 0);
-});
-
+}
 

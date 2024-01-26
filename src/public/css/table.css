@@ -33,7 +33,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before {
   box-shadow: none;
 }
 
-#defects_list_table tbody tr td,
+#defects_list_table tbody tr.even td,
 #production_list_table tbody tr.even td {
   background: rgb(184 179 179 / 5%);
 }
