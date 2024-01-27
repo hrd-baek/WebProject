@@ -35,3 +35,8 @@ const language = {
 }
 
 
+function enterkey() {
+	if (window.event.keyCode == 13) {
+        $('#search-btn').click();
+    }
+}

@@ -19,21 +19,31 @@ function newTable(obj, data) {
             { data: 'module_id', title: '모듈 번호' },
             { data: 'module_type_id', title: '모듈 이름' },
             { data: 'module_id', title: 'Cell 정보' },
-            { data: 'defects', title: '용접' },
+            { data: 'defects', title: '용접 상태' },
             { data: 'voltage', title: '전압' },
-            { data: 'storage', title: '창고' },
-            { data: 'finish_time', title: '생산 일시' },
+            { data: 'start_time', title: '생산 시작 일시' },
+            { data: 'finish_time', title: '생산 완료 일시' },
         ],
         columnDefs: [
             {
+                targets: [5], render: function (data, type, row) {
+                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
+                }
+            },
+            {
                 targets: [2], render: function (data, type, row) {
                     return `<span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop">Click</span>`;
+                    data-bs-target="#staticBackdrop" style="cursor :pointer">Click</span>`;
                 }
             },
             {
                 targets: [3], render: function (data, type, row) {
-                    return data == 0 ? '양품' : '불량품';
+                    return data == 0 ? '양호' : '불량';
+                }
+            },
+            {
+                targets: [4], render: function (data, type, row) {
+                    return data+" V"
                 }
             },
             {

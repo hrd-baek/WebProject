@@ -17,12 +17,20 @@ function newTable(obj, data) {
     var table = $('#defects_list_table').DataTable({
         columns: [
             { data: 'module_id', title: '모듈 번호' },
+            { data: 'module_type_id', title: '모듈 이름' },
             { data: 'type', title: '불량 유형' },
-            { data: 'occur_time', title: '발생 일시' }
+            { data: 'start_time', title: '생산 시작 일시' },
+            { data: 'occur_time', title: '불량 발생 일시' }
         ],
         columnDefs: [
             {
-                targets: [2], render: function (data, type, row) {
+                targets: [3], render: function (data, type, row) {
+                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
+                }
+            },
+
+            {
+                targets: [4], render: function (data, type, row) {
                     return moment(data).format('YYYY-MM-DD hh:mm:ss');
                 }
             },

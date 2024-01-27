@@ -47,7 +47,7 @@ router.post('/list', (req, res) => {
 router.get('/defects', (req, res) => {
     let startDate = common.getToday() + ' 00:00:00'
     let endDate = common.getToday() + ' 23:59:59'
-    var sql = 'SELECT * FROM module_defects WHERE occur_time between ?  AND ? order by occur_time ;';
+    var sql = 'SELECT * FROM module_defects md left join module m on md.module_id = m.module_id WHERE occur_time between ?  AND ? order by occur_time ;';
     var values = [startDate, endDate];
 
     db.query(sql, values, (error, result) => {
@@ -68,17 +68,16 @@ router.post('/defects', (req, res) => {
     let sql = "";
     let values = [startDate, endDate];
     if (input == '') {
-        sql = 'SELECT module_id, type, occur_time FROM module_defects WHERE occur_time BETWEEN ? AND ? ORDER BY occur_time';
+        sql = 'SELECT * FROM module_defects md left join module m on md.module_id = m.module_id WHERE occur_time between ?  AND ? order by occur_time ;';
     }
     else if (option == 1) {
-        sql = 'SELECT module_id, type, occur_time FROM module_defects WHERE module_id LIKE ? AND occur_time BETWEEN ? AND ? ORDER BY occur_time';
+        sql = 'SELECT * FROM module_defects md left join module m on md.module_id = m.module_id WHERE m.module_id LIKE ? AND occur_time BETWEEN ? AND ? ORDER BY occur_time';
         values.unshift(`%${input}%`);
     } else if (option == 2) {
-        sql = 'SELECT module_id, type, occur_time FROM module_defects WHERE type LIKE ? AND occur_time BETWEEN ? AND ? ORDER BY occur_time';
+        sql = 'SELECT * FROM module_defects md left join module m on md.module_id = m.module_id WHERE type LIKE ? AND occur_time BETWEEN ? AND ? ORDER BY occur_time';
         values.unshift(`%${input}%`);
     }
 
-    console.log(sql);
     db.query(sql, values, (error, result) => {
         if (error) throw error;
         res.json(result);
