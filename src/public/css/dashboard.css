@@ -8,7 +8,6 @@
 }
  */
 
-
 .defects-table {
     text-align: center;
 }
@@ -46,11 +45,7 @@
     height: 25px;
 }
 
-.process_unit_2 img,
-.process_unit_3 img,
-.process_unit_4 img,
-.process_unit_5 img,
-.process_unit_6 img {
+.process_unit_2 img{
     width:60px;
     height: 30px;
 }
@@ -65,32 +60,9 @@
     left: 71%;
 }
 
-.process_unit_2,
-.process_unit_3,
-.process_unit_4,
-.process_unit_6 {
+.process_unit_2{
     top: 60%;
-}
-
-.process_unit_5 {
-    top: 76%;
-    left: 28%;
-}
-
-.process_unit_2 {
     left: 80%;
-}
-
-.process_unit_3 {
-    left: 55%;
-}
-
-.process_unit_4 {
-    left: 28%;
-}
-
-.process_unit_6 {
-    left: 11%;
 }
 
 .storage_good .storage_work {
@@ -198,42 +170,16 @@
         height: 10px;
     }
 
-    .process_unit_2 img,
-    .process_unit_3 img,
-    .process_unit_4 img,
-    .process_unit_5 img,
-    .process_unit_6 img {
+    .process_unit_2 img {
         width: 23px;
         height: 10px;
     }
 
-    .process_unit_2,
-    .process_unit_3,
-    .process_unit_4,
-    .process_unit_6 {
-        top: 55%;
-    }
-
-    .process_unit_5 {
-        top: 73%;
-        left: 28%;
-    }
-
     .process_unit_2 {
+        top: 55%;
         left: 77%;
     }
 
-    .process_unit_3 {
-        left: 55%;
-    }
-
-    .process_unit_4 {
-        left: 28%;
-    }
-
-    .process_unit_6 {
-        left: 11%;
-    }
     .storage_good .storage_work {
         position: absolute;
         top: 13%;

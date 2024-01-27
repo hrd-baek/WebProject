@@ -9,17 +9,14 @@ const moment = require("moment");
 
 
 router.get('/', (req, res) => {
-  let { user } = req.session;
   res.locals.styleNo = 1;
-
-
   let startDate = common.getToday() + ' 00:00:00'
   let endDate = common.getToday() + ' 23:59:59'
   var sql1 = 'SELECT * FROM module WHERE finish_time BETWEEN ? AND ? ORDER BY finish_time DESC; ';
   var sql2 = 'SELECT (SELECT COUNT(DISTINCT module_id) FROM module_defects WHERE occur_time BETWEEN ? AND ? ) AS distinct_module_count,  module_defects.*' +
-              'FROM module_defects ' +
-              'WHERE occur_time BETWEEN ? AND ? ' +
-              'ORDER BY occur_time DESC;'
+    'FROM module_defects ' +
+    'WHERE occur_time BETWEEN ? AND ? ' +
+    'ORDER BY occur_time DESC;'
   var values = [startDate, endDate, startDate, endDate, startDate, endDate];
 
   db.query(sql1 + sql2, values, (error, result) => {
@@ -31,8 +28,24 @@ router.get('/', (req, res) => {
       console.log(result);
     }
   });
-
 })
+
+router.post('/', (req, res) => {
+  let startDate = common.getToday() + ' 00:00:00'
+  let endDate = common.getToday() + ' 23:59:59'
+  var sql1 = 'SELECT * FROM module WHERE finish_time BETWEEN ? AND ? ORDER BY finish_time DESC; ';
+  var sql2 = 'SELECT (SELECT COUNT(DISTINCT module_id) FROM module_defects WHERE occur_time BETWEEN ? AND ? ) AS distinct_module_count,  module_defects.*' +
+    'FROM module_defects ' +
+    'WHERE occur_time BETWEEN ? AND ? ' +
+    'ORDER BY occur_time DESC;'
+  var values = [startDate, endDate, startDate, endDate, startDate, endDate];
+
+  db.query(sql1 + sql2, values, (error, result) => {
+    if (error) throw error;
+    res.json(result);
+  });
+})
+
 
 router.get('/group1', (req, res) => {
   res.locals.styleNo = 100;

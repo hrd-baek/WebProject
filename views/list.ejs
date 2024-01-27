@@ -47,8 +47,10 @@
                                     </td>
 
                                     <td>
-                                        <span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop" style="cursor :pointer">Click</span>
+                                        <!-- <span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop" style="cursor :pointer">Click</span> -->
+                                        <span class="badge badge-sm bg-secondary" onclick="getCellData(this)"
+                                            style="cursor :pointer">Click</span>
                                     </td>
 
                                     <td>
@@ -96,3 +98,29 @@
 </div>
 <!-- <script src="/js/table.js" defer></script> -->
 <script src="/js/list.js" defer></script>
+<script>
+    function getCellData(element) {
+        var row = element.closest('tr');
+        var moduleID = row.querySelector('td:first-child').innerText;
+
+        $.ajax({
+        url: "/production/list/cell",
+        type: "POST",
+        async: false,
+        dataType: "json",
+        data : {moduleId : moduleID},
+        success: function (res) {
+            $('#staticBackdrop').modal('show');
+            
+            var str = "";
+            for(var i=0; i<res.length; i++){
+                str += res[i].stacking_id;
+            }
+            $('#staticBackdrop .modal-body').html(str);
+        },
+        error: function (xhr) {
+            alert(xhr);
+        }
+        });
+    }
+</script>

@@ -43,6 +43,16 @@ router.post('/list', (req, res) => {
     });
 })
 
+router.post('/list/cell', (req, res) => {
+    let moduleId = req.body.moduleId;
+    var sql = "select * from module_stacking ms left join stacking s on ms.stacking_id = s.stacking_id where ms.module_id = ?;";
+    var values = [moduleId];
+    db.query(sql, values, (error, result) => {
+        if (error) throw error;
+        res.json(result);
+    });
+})
+
 
 router.get('/defects', (req, res) => {
     let startDate = common.getToday() + ' 00:00:00'

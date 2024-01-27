@@ -32,20 +32,16 @@ client.on('connect', () => {
             if (data.M8186 && dataCheckList.lastModule == "") {
                 createModule();
             }
-
-
             if (dataCheckList.lastModule != "") {
                 if (data.M8181 && dataCheckList.stacking == false) {
                     setModuleStacking();
                 }
-
                 if (data.M8131 || data.M8119) {
                     if (dataCheckList.storage == false) {
                         setModuleStorage();
                     }
                 }
             }
-
         }
         if (dataCheckList.lastModule != "") {
             if (topic == topic_barcode) {
@@ -53,24 +49,28 @@ client.on('connect', () => {
                     var type = data.barcode.substr(0, 3).toString();
                     var voltTemp = parseInt(data.barcode.substr(3, 2));
                     var volt = 0;
-
-                    if (type == '752') {
-                        volt = voltTemp * 2;
-                        if (volt < 30 || volt > 70) {
-                            insertModuleDefects("전압 이상");
+                        console.log(type, voltTemp);
+                    if (type == '752' || type == '491' || type == '251') {
+                        if (type == '752') {
+                            volt = voltTemp * 2;
+                            if (volt < 30 || volt > 70) {
+                                insertModuleDefects("전압 이상");
+                            }
+                        } else if (type == '491') {
+                            volt = voltTemp * 10
+                            if (volt < 70 || volt > 90) {
+                                insertModuleDefects("전압 이상");
+                            }
+                        } else if (type == '251') {
+                            volt = voltTemp;
+                            if (volt < 20 || volt > 30) {
+                                insertModuleDefects("전압 이상");
+                            }
                         }
-                    } else if (type == '491') {
-                        volt = voltTemp * 10
-                        if (volt < 70 || volt > 90) {
-                            insertModuleDefects("전압 이상");
-                        }
+                        insertBarcode('module-'+type, volt);
                     } else {
-                        volt = voltTemp;
-                        if (volt < 20 || volt > 30) {
-                            insertModuleDefects("전압 이상");
-                        }
+                        insertModuleDefects("바코드 에러");
                     }
-                    insertBarcode('module-' + type, volt);
                 }
             }
             if (topic == topic_welding) {
@@ -134,7 +134,7 @@ function insertModuleDefects(type) {
 }
 
 function setModuleStacking() {
-    var sql = 'SELECT stacking_id FROM stacking ORDER BY stacking_id DESC LIMIT 3;';
+    var sql = 'SELECT stacking_id FROM stacking WHERE b_test = 0 ORDER BY stacking_id DESC LIMIT 3;';
     db.query(sql, (error, result) => {
         if (error) throw error;
         if (result.length > 0) {

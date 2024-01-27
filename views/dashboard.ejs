@@ -28,8 +28,9 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">양품</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    <%= (prodData.length - (defectsData.length > 0  ? defectsData[0].distinct_module_count : 0)) %>
+                                <h5 class="font-weight-bolder mb-0" id="fair_quality">
+                                    <%= (prodData.length - (defectsData.length> 0 ? defectsData[0].distinct_module_count
+                                        : 0)) %>
                                         <!-- <span class="text-success text-sm font-weight-bolder">+3%</span> -->
                                 </h5>
                             </div>
@@ -50,8 +51,8 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">불량품</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    <%= defectsData.length > 0  ? defectsData[0].distinct_module_count : 0 %>
+                                <h5 class="font-weight-bolder mb-0" id="defective_quality">
+                                    <%= defectsData.length> 0 ? defectsData[0].distinct_module_count : 0 %>
                                         <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span> -->
                                 </h5>
                             </div>
@@ -72,7 +73,7 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">총 생산량</p>
-                                <h5 class="font-weight-bolder mb-0">
+                                <h5 class="font-weight-bolder mb-0" id="total">
                                     <%= prodData.length %>
                                         <!-- <span class="text-success text-sm font-weight-bolder">+5%</span> -->
                                 </h5>
@@ -104,12 +105,10 @@
                                     <div class='process_unit process_unit_1'>
                                         <img src="/image/work_cell_2.png"></img>
                                     </div>
-                                    <% for(var i=2; i<7; i++){ %>
-                                        <div class='<%="process_unit process_unit_"+i %>'
-                                            id='<%="process_unit process_unit_"+i %>'>
-                                            <img src="/image/new_work_4.png" id='process_work_image'></img>
-                                        </div>
-                                        <%} %>
+                                    <div class='process_unit process_unit_2' id='process_unit_2'>
+                                        <img src="/image/new_work_4.png" id='process_work_image'></img>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -198,7 +197,7 @@
                 </div>
                 <div class="card-body p-3">
                     <div class="table-responsive p-0 no_scroll">
-                        <table class="table align-items-center mb-0  ">
+                        <table class="table align-items-center mb-0" id="dashboard_defects_table">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary font-weight-bolder opacity-7">모듈
@@ -278,7 +277,7 @@
                             <h5>CCTV</h5>
                         </div>
                         <div class="col-lg-6 col-5 my-auto text-end"><span style="cursor: pointer;"
-                                onclick="openPopupCCTV();">크게 보기</span>
+                                onclick="refreshPage();">크게 보기</span>
                         </div>
 
                     </div>
@@ -304,7 +303,7 @@
                 </div>
                 <div class="card-body p-3">
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table class="table align-items-center mb-0" id='dashboard_prod_table'>
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary font-weight-bolder opacity-7">
@@ -377,5 +376,4 @@
 <script src="/js/mqttws31.js" defer></script>
 <script src="/js/mqtt.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
-
 <script src="/js/dashboard.js" defer></script>

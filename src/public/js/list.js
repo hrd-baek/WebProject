@@ -32,8 +32,7 @@ function newTable(obj, data) {
             },
             {
                 targets: [2], render: function (data, type, row) {
-                    return `<span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop" style="cursor :pointer">Click</span>`;
+                    return `<span class="badge badge-sm bg-secondary" onclick="getCellData(this)" style="cursor :pointer">Click</span>`;
                 }
             },
             {

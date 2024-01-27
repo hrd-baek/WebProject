@@ -61,7 +61,6 @@ function onMessageArrived(message) {
             document.querySelector(".process_unit_2").classList.add("go_left_1");
             processStatusEnd('process_packaging');
             processStatusStart('process_welding');
-
         }
 
         if (obj.M8175) {
@@ -69,7 +68,6 @@ function onMessageArrived(message) {
             document.querySelector(".process_unit_2").classList.add("go_left_2");
             processStatusEnd('process_welding');
             processStatusStart('process_inspection');
-        
         }
 
         if (obj.M8170) {
@@ -99,6 +97,7 @@ function onMessageArrived(message) {
             $(".process_unit_2").removeClass('go_con_1 go_left_1 go_left_2 go_bottom_1 go_top_1 go_left_3 go_top_2');
             processVisible(false, $(".process_unit_2"));
             processStatusEnd('process_loading');
+            refreshPage();
         }
     }
 
