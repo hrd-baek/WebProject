@@ -54,9 +54,6 @@ router.get('/', (req, res) => {
         defectsChange: parseFloat(defectsPercentageChange),
         totalChange: parseFloat(totalPercentageChange)
       }
-      for(var i=0; i< result[0].length; i++){
-        console.log(result[0]);
-      }
       res.render("dashboard", data);
     }
     else {

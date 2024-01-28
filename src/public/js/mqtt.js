@@ -103,12 +103,12 @@ function onMessageArrived(message) {
 
     if (message.destinationName == mqtt_topic_x) {
         processVisible(obj.X2, $(".process_unit_1"));
-        storageVisible(obj.X24, $(".storage_good .storage_work_1"));
+        storageVisible(obj.X24,  $(".storage_good .storage_work_3"));
         storageVisible(obj.X25, $(".storage_good .storage_work_2"));
-        storageVisible(obj.X26, $(".storage_good .storage_work_3"));
-        storageVisible(obj.X27, $(".storage_defects .storage_work_1"));
+        storageVisible(obj.X26, $(".storage_good .storage_work_1"));
+        storageVisible(obj.X27, $(".storage_defects .storage_work_3"));
         storageVisible(obj.X28, $(".storage_defects .storage_work_2"));
-        storageVisible(obj.X29, $(".storage_defects .storage_work_3"));
+        storageVisible(obj.X29, $(".storage_defects .storage_work_1"));
     }
     // fncMqttAction(message.payloadString);
 }

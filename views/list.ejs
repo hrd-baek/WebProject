@@ -43,7 +43,9 @@
                                     </td>
 
                                     <td>
-                                        <%= tableData[i].module_type_id %>
+
+                                        <%= tableData[i].module_type_id==null ? '미분류' :
+                                        tableData[i].module_type_id %>
                                     </td>
 
                                     <td>
@@ -58,7 +60,7 @@
                                     </td>
 
                                     <td>
-                                        <%= tableData[i].voltage %> V
+                                        <%= tableData[i].voltage==null ? '미측정' : tableData[i].voltage +' V' %> 
                                     </td>
 
                                     <td>

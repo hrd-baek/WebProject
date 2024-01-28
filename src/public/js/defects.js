@@ -22,7 +22,12 @@ function newTable(obj, data) {
             { data: 'start_time', title: '생산 시작 일시' },
             { data: 'occur_time', title: '불량 발생 일시' }
         ],
-        columnDefs: [
+        columnDefs: [{
+            targets: [1], render: function (data, type, row) {
+
+                return data == null ? '미분류' : data;
+            }
+        }
         ],
         lengthChange: false,
         searching: false,

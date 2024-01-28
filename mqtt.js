@@ -36,7 +36,12 @@ client.on('connect', () => {
                 if (data.M8181 && dataCheckList.stacking == false) {
                     setModuleStacking();
                 }
-                if (data.M8131 || data.M8119) {
+                // if (data.M8131 || data.M8119) {
+                //     if (dataCheckList.storage == false) {
+                //         setModuleStorage();
+                //     }
+                // }
+                if (data.M804) {
                     if (dataCheckList.storage == false) {
                         setModuleStorage();
                     }

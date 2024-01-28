@@ -26,6 +26,11 @@ function newTable(obj, data) {
         ],
         columnDefs: [
             {
+                targets: [1], render: function (data, type, row) {
+                    return data == null ? '미분류' : data;
+                }
+            },
+            {
                 targets: [2], render: function (data, type, row) {
                     return `<span class="badge badge-sm bg-secondary" onclick="getCellData(this)" style="cursor :pointer">Click</span>`;
                 }
@@ -37,7 +42,8 @@ function newTable(obj, data) {
             },
             {
                 targets: [4], render: function (data, type, row) {
-                    return data+" V"
+
+                    return data == null ? '미측정' : data + ' V';
                 }
             }
         ],

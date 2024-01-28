@@ -50,9 +50,9 @@ function refreshPage() {
             $('#fair_quality').html(`${fair} <span id="fair_percent"> </span>`);
             $('#defective_quality').html(`${def} <span id="def_percent"> </span>`);
             $('#total').html(`${tot} <span id="total_percent"> </span>`);
-            refreshPercentage($('#'+fairId), prodChange);
-            refreshPercentage($('#'+defId), defectsChange);
-            refreshPercentage($('#'+totId), totalChange);
+            refreshPercentage($('#' + fairId), prodChange);
+            refreshPercentage($('#' + defId), defectsChange);
+            refreshPercentage($('#' + totId), totalChange);
 
             var newDefectTable = "";
             if (defectsData.length != 0) {
@@ -101,7 +101,7 @@ function refreshPage() {
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <p class="font-weight-bold mb-0">
-                                                ${prodData[i].module_type_id}
+                                            ${prodData[i].module_type_id == null ? '미분류' : prodData[i].module_type_id} 
                                             </p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
@@ -111,7 +111,7 @@ function refreshPage() {
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <p class="font-weight-bold mb-0">
-                                                ${prodData[i].voltage} 
+                                                ${prodData[i].voltage == null ? '미측정' : prodData[i].voltage} 
                                             </p>
                                         </td>
 

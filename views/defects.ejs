@@ -42,7 +42,8 @@
                                             <%= tableData[i].module_id %>
                                         </td>
                                         <td>
-                                            <%= tableData[i].module_type_id %>
+                                            <%= tableData[i].module_type_id==null ? '미분류' :
+                                            tableData[i].module_type_id %>
                                         </td>
                                         <td>
                                             <%= tableData[i].type %>

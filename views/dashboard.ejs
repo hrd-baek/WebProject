@@ -13,7 +13,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-calendar-grid-58 text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="fa fa-certificate text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-bold-down text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="ni ni-chart-bar-32 text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -383,7 +383,8 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <p class="font-weight-bold mb-0">
-                                                    <%= prodData[i].module_type_id %>
+                                                    <%= prodData[i].module_type_id==null ? '미분류' :
+                                                        prodData[i].module_type_id %>
                                                 </p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
@@ -393,7 +394,7 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <p class="font-weight-bold mb-0">
-                                                    <%= prodData[i].voltage %>
+                                                    <%= prodData[i].voltage==null ? '미측정' : prodData[i].voltage %>
                                                 </p>
                                             </td>
 
@@ -427,3 +428,4 @@
 <script src="/js/mqtt.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
 <script src="/js/dashboard.js" defer></script>
+<!-- <script src="/js/dashboard-socket.js" defer></script> -->

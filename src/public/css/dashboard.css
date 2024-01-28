@@ -45,8 +45,8 @@
     height: 25px;
 }
 
-.process_unit_2 img{
-    width:60px;
+.process_unit_2 img {
+    width: 60px;
     height: 30px;
 }
 
@@ -60,7 +60,7 @@
     left: 71%;
 }
 
-.process_unit_2{
+.process_unit_2 {
     top: 60%;
     left: 80%;
 }
@@ -104,6 +104,7 @@
     transition-duration: 2s;
     /* transition-delay: 1s; */
 }
+
 .go_left_1 {
     transform: translate(-320%, -80%);
     transition-property: all;
@@ -121,14 +122,14 @@
 .go_bottom_1 {
     transform: translate(-690%, 20%);
     transition-property: all;
-    transition-duration: 13s;
+    transition-duration: 15s;
     /* transition-delay: 1s; */
 }
 
 .go_top_1 {
     transform: translate(-690%, -80%);
     transition-property: all;
-    transition-duration: 13s;
+    transition-duration: 18s;
     /* transition-delay: 1s; */
 }
 
@@ -140,9 +141,9 @@
 }
 
 .go_top_2 {
-    transform: translate(-890%, -600%);
+    transform: translate(-800%, -530%);
     transition-property: all;
-    transition-duration: 20s;
+    transition-duration: 25s;
     /* transition-delay: 1s; */
 }
 
@@ -171,23 +172,52 @@
     }
 
     .process_unit_2 img {
-        width: 23px;
-        height: 10px;
+        width: 35px;
+        height: 20px;
     }
 
     .process_unit_2 {
-        top: 55%;
-        left: 77%;
+        top: 60%;
+        left: 80%;
     }
 
+    .go_left_2 {
+        transform: translate(-670%, -80%);
+        transition-property: all;
+        transition-duration: 4s;
+        /* transition-delay: 1s; */
+    }
+
+    .go_bottom_1 {
+        transform: translate(-670%, 30%);
+        transition-property: all;
+        transition-duration: 15s;
+        /* transition-delay: 1s; */
+    }
+
+    .go_top_1 {
+        transform: translate(-670%, -80%);
+        transition-property: all;
+        transition-duration: 18s;
+        /* transition-delay: 1s; */
+    }
+    .go_top_2 {
+        transform: translate(-800%, -500%);
+        transition-property: all;
+        transition-duration: 25s;
+        /* transition-delay: 1s; */
+    }
+    
     .storage_good .storage_work {
         position: absolute;
         top: 13%;
     }
+
     .storage_defects .storage_work {
         position: absolute;
         top: 50%;
     }
+
     .process_default_img {
         width: 100%;
         height: 280px;
@@ -225,25 +255,40 @@
 
 .no_scroll::-webkit-scrollbar {
     display: none !important;
-  }
+}
 
-  .blinking{
+.blinking {
     -webkit-animation: blink 0.7s ease-in-out infinite alternate;
     -moz-animation: blink 0.7s ease-in-out infinite alternate;
     animation: blink 0.7s ease-in-out infinite alternate;
-  }
-  
-  @-webkit-keyframes blink{
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-  }
-  
-  @-moz-keyframes blink{
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-  }
-  
-  @keyframes blink{
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-  }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
