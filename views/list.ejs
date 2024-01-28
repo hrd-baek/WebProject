@@ -62,10 +62,10 @@
                                     </td>
 
                                     <td>
-                                        <%= moment(tableData[i].start_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                        <%= tableData[i].start_time %>
                                     </td>
                                     <td>
-                                        <%= moment(tableData[i].finish_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                        <%= tableData[i].finish_time %>
                                     </td>
                                 </tr>
                                 <%} %>
@@ -104,23 +104,23 @@
         var moduleID = row.querySelector('td:first-child').innerText;
 
         $.ajax({
-        url: "/production/list/cell",
-        type: "POST",
-        async: false,
-        dataType: "json",
-        data : {moduleId : moduleID},
-        success: function (res) {
-            $('#staticBackdrop').modal('show');
-            
-            var str = "";
-            for(var i=0; i<res.length; i++){
-                str += res[i].stacking_id;
+            url: "/production/list/cell",
+            type: "POST",
+            async: false,
+            dataType: "json",
+            data: { moduleId: moduleID },
+            success: function (res) {
+                $('#staticBackdrop').modal('show');
+
+                var str = "";
+                for (var i = 0; i < res.length; i++) {
+                    str += res[i].stacking_id;
+                }
+                $('#staticBackdrop .modal-body').html(str);
+            },
+            error: function (xhr) {
+                alert(xhr);
             }
-            $('#staticBackdrop .modal-body').html(str);
-        },
-        error: function (xhr) {
-            alert(xhr);
-        }
         });
     }
 </script>

@@ -11,11 +11,13 @@
   "dependencies": {
     "axios": "^1.6.6",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.4.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
     "moment": "^2.30.1",
+    "moment-timezone": "^0.5.44",
     "mqtt": "^5.3.4",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.0",

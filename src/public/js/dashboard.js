@@ -74,7 +74,7 @@ function refreshPage() {
                                         </td>
                                         <td class="align-middle text-center">
                                             <p class="font-weight-bold mb-0">
-                                                ${moment(defectsData[i].occur_time).format('YYYY-MM-DD hh:mm:ss')}                                   
+                                                ${defectsData[i].occur_time}                                   
                                             </p>
                                         </td>
                                     </tr>`
@@ -117,7 +117,7 @@ function refreshPage() {
 
                                         <td class="align-middle text-center">
                                             <p class="font-weight-bold mb-0">
-                                                ${moment(prodData[i].finish_time).format('YYYY-MM-DD hh:mm:ss')}
+                                                ${prodData[i].finish_time}
                                             </p>
                                         </td>
                                     </tr>`

@@ -23,18 +23,6 @@ function newTable(obj, data) {
             { data: 'occur_time', title: '불량 발생 일시' }
         ],
         columnDefs: [
-            {
-                targets: [3], render: function (data, type, row) {
-                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
-                }
-            },
-
-            {
-                targets: [4], render: function (data, type, row) {
-                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
-                }
-            },
-
         ],
         lengthChange: false,
         searching: false,

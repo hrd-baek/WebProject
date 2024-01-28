@@ -5,8 +5,6 @@ const prodRouter = require('./production/index.js')
 const mqtt = require('../mqtt.js');
 const db = require('../lib/db.js');
 const common = require('../src/private/common.js');
-const moment = require("moment");
-
 
 router.get('/', (req, res) => {
   res.locals.styleNo = 1;
@@ -29,7 +27,6 @@ router.get('/', (req, res) => {
               ORDER BY module_count DESC; `
 
   var values = [startDate, endDate, startDate, endDate, startDate, endDate, yesterdayStart, yesterdayEnd, yesterdayStart, yesterdayEnd];
-
   db.query(sql1 + sql2 + sql3, values, (error, result) => {
     if (error) throw error;
     if (result.length > 0) {
@@ -55,8 +52,10 @@ router.get('/', (req, res) => {
         defectsData: result[1],
         prodChange: parseFloat(prodPercentageChange),
         defectsChange: parseFloat(defectsPercentageChange),
-        totalChange: parseFloat(totalPercentageChange),
-        moment
+        totalChange: parseFloat(totalPercentageChange)
+      }
+      for(var i=0; i< result[0].length; i++){
+        console.log(result[0]);
       }
       res.render("dashboard", data);
     }
@@ -99,7 +98,7 @@ router.post('/', (req, res) => {
 
     let productionDifference = tProdData - yProdData;
     let prodPercentageChange = ((productionDifference / yProdData) * 100).toFixed(1);
-    
+
     let defectsDifference = tDefData - yDefData;
     let defectsPercentageChange = ((defectsDifference / yDefData) * 100).toFixed(1);
 
@@ -111,8 +110,7 @@ router.post('/', (req, res) => {
       defectsData: result[1],
       prodChange: parseFloat(prodPercentageChange),
       defectsChange: parseFloat(defectsPercentageChange),
-      totalChange: parseFloat(totalPercentageChange),
-      moment
+      totalChange: parseFloat(totalPercentageChange)
     }
 
     res.json(data);

@@ -134,7 +134,7 @@ function insertModuleDefects(type) {
 }
 
 function setModuleStacking() {
-    var sql = 'SELECT stacking_id FROM stacking WHERE b_test = 0 ORDER BY stacking_id DESC LIMIT 3;';
+    var sql = 'SELECT stacking_id FROM stacking WHERE b_test2 = 0 ORDER BY stacking_id DESC LIMIT 3;';
     db.query(sql, (error, result) => {
         if (error) throw error;
         if (result.length > 0) {

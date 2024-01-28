@@ -4,11 +4,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const router = require('./routes/index.js');
 const expressLayout = require('express-ejs-layouts');
-
 app.use(express.static(`${__dirname}/src/public`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressLayout);
-
 
 app.set("layout", 'layout');
 app.set("layout extractScripts", true);

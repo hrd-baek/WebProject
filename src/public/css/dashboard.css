@@ -142,7 +142,7 @@
 .go_top_2 {
     transform: translate(-890%, -600%);
     transition-property: all;
-    transition-duration: 5s;
+    transition-duration: 20s;
     /* transition-delay: 1s; */
 }
 

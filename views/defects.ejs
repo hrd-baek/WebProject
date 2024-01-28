@@ -18,9 +18,9 @@
                         </div>
                         <div class="col-xl-4" style="text-align: center;">
                             <div class="table_search">
-                                <input type="text" placeholder="검색어 입력" id="search-input" onkeyup="enterkey()" >
+                                <input type="text" placeholder="검색어 입력" id="search-input" onkeyup="enterkey()">
                                 <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
-                                    onclick="tableSearch()" id ="search-btn">
+                                    onclick="tableSearch()" id="search-btn">
                             </div>
                         </div>
                     </div>
@@ -48,10 +48,10 @@
                                             <%= tableData[i].type %>
                                         </td>
                                         <td>
-                                            <%= moment(tableData[i].start_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                            <%= tableData[i].start_time%>
                                         </td>
                                         <td>
-                                            <%= moment(tableData[i].occur_time).format('YYYY-MM-DD hh:mm:ss') %>
+                                            <%=tableData[i].occur_time%>
                                         </td>
                                     </tr>
                                     <%} %>

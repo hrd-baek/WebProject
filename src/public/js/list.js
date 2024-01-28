@@ -26,11 +26,6 @@ function newTable(obj, data) {
         ],
         columnDefs: [
             {
-                targets: [5], render: function (data, type, row) {
-                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
-                }
-            },
-            {
                 targets: [2], render: function (data, type, row) {
                     return `<span class="badge badge-sm bg-secondary" onclick="getCellData(this)" style="cursor :pointer">Click</span>`;
                 }
@@ -43,11 +38,6 @@ function newTable(obj, data) {
             {
                 targets: [4], render: function (data, type, row) {
                     return data+" V"
-                }
-            },
-            {
-                targets: [6], render: function (data, type, row) {
-                    return moment(data).format('YYYY-MM-DD hh:mm:ss');
                 }
             }
         ],

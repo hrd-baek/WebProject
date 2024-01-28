@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require('../../lib/db.js');
 const common = require('../../src/private/common.js');
-const moment = require("moment");
 
 router.get('/list', (req, res) => {
 
@@ -14,7 +13,7 @@ router.get('/list', (req, res) => {
     db.query(sql, values, (error, result) => {
         if (error) throw error;
         res.locals.styleNo = 2;
-        res.render("list", { tableData: result, moment });
+        res.render("list", { tableData: result });
     });
 
 })
@@ -63,7 +62,7 @@ router.get('/defects', (req, res) => {
     db.query(sql, values, (error, result) => {
         if (error) throw error;
         res.locals.styleNo = 3;
-        res.render("defects", { tableData: result, moment });
+        res.render("defects", { tableData: result });
     });
 
 })
