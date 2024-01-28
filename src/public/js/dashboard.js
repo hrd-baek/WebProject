@@ -3,8 +3,8 @@ window.addEventListener('DOMContentLoaded', event => {
     let t = new Date();
 
     let year = t.getFullYear(); // 년도
-    let month = t.getMonth() + 1;  // 월
-    let date = t.getDate();  // 날짜
+    let month = ('0' + (t.getMonth() + 1)).slice(-2); // 월
+    let date = ('0' + t.getDate()).slice(-2); // 날짜
     let day = t.getDay();  // 요일
     let today = (year + '년 ' + month + '월 ' + date + '일 ')
     document.getElementById("today-section").innerHTML = today;
@@ -34,15 +34,26 @@ function refreshPage() {
         async: false,
         dataType: "json",
         success: function (res) {
-            // id ="fair_quality" id ="total" id ="defective_quality"
             console.log(res);
-            let prodData = res[0];
-            let defectsData = res[1];
+            let prodData = res.prodData;
+            let defectsData = res.defectsData;
+            let prodChange = res.prodChange;
+            let defectsChange = res.defectsChange;
+            let totalChange = res.totalChange;
+            let fair = prodData.length - (defectsData.length > 0 ? defectsData[0].distinct_module_count : 0);
+            let def = (defectsData.length > 0 ? defectsData[0].distinct_module_count : 0);
+            let tot = prodData.length;
+            let fairId = 'fair_percent';
+            let defId = 'def_percent';
+            let totId = 'total_percent';
 
-            $('#fair_quality').text(prodData.length - (defectsData.length > 0 ? defectsData[0].distinct_module_count : 0));
-            $('#defective_quality').text((defectsData.length > 0 ? defectsData[0].distinct_module_count : 0));
-            $('#total').text(prodData.length);
-            
+            $('#fair_quality').html(`${fair} <span id="fair_percent"> </span>`);
+            $('#defective_quality').html(`${def} <span id="def_percent"> </span>`);
+            $('#total').html(`${tot} <span id="total_percent"> </span>`);
+            refreshPercentage($('#'+fairId), prodChange);
+            refreshPercentage($('#'+defId), defectsChange);
+            refreshPercentage($('#'+totId), totalChange);
+
             var newDefectTable = "";
             if (defectsData.length != 0) {
                 for (var i = 0; i < (defectsData.length >= 5 ? 5 : defectsData.length); i++) {
@@ -95,7 +106,7 @@ function refreshPage() {
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <p class="font-weight-bold mb-0">
-                                                ${prodData[i].defectss == 0 ? '양호' : '불량'}
+                                                ${prodData[i].defects == 0 ? '양호' : '불량'}
                                             </p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
@@ -123,4 +134,21 @@ function refreshPage() {
             alert(xhr);
         }
     });
+}
+
+function refreshPercentage(obj, change) {
+    let str = "";
+    console.log(change)
+    if (change > 0) {
+        str = `<span class="text-success text-sm font-weight-bolder">+${change}% </span>`
+    } else if (change < 0) {
+        str = `<span class="text-danger text-sm font-weight-bolder"> ${change}% </span>`
+    } else if (change == 0) {
+        str = `<span class="text-secondary text-sm font-weight-bolder"> - </span>`
+    } else {
+        str = `<span class="text-light text-sm font-weight-bolder"> NaN </span>`
+    }
+    console.log(str);
+    console.log(obj)
+    obj.html(str);
 }

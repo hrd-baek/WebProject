@@ -8,7 +8,6 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Today</p>
                                 <h5 class="font-weight-bolder mb-0" id="today-section">
-                                    <!-- <span class="text-success text-sm font-weight-bolder">+55%</span> -->
                                 </h5>
                             </div>
                         </div>
@@ -31,7 +30,23 @@
                                 <h5 class="font-weight-bolder mb-0" id="fair_quality">
                                     <%= (prodData.length - (defectsData.length> 0 ? defectsData[0].distinct_module_count
                                         : 0)) %>
-                                        <!-- <span class="text-success text-sm font-weight-bolder">+3%</span> -->
+                                        <% if (prodChange> 0) { %>
+                                            <span class="text-success text-sm font-weight-bolder">+<%= prodChange %>
+                                                    %</span>
+                                            <% } else if (prodChange < 0) { %>
+                                                <span class="text-danger text-sm font-weight-bolder">
+                                                    <%= prodChange %>%
+                                                </span>
+                                                <% } else if(prodChange==0) { %>
+                                                    <span class="text-secondary text-sm font-weight-bolder">
+                                                        -
+                                                    </span>
+                                                    <% } else{ %>
+                                                        <span class="text-light text-sm font-weight-bolder">
+                                                            <%= prodChange %>
+                                                        </span>
+                                                        <% } %>%>
+
                                 </h5>
                             </div>
                         </div>
@@ -53,7 +68,23 @@
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">불량품</p>
                                 <h5 class="font-weight-bolder mb-0" id="defective_quality">
                                     <%= defectsData.length> 0 ? defectsData[0].distinct_module_count : 0 %>
-                                        <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span> -->
+
+                                        <% if (defectsChange> 0) { %>
+                                            <span class="text-success text-sm font-weight-bolder">+<%= defectsChange %>
+                                                    %</span>
+                                            <% } else if (defectsChange < 0) { %>
+                                                <span class="text-danger text-sm font-weight-bolder">
+                                                    <%= defectsChange %>%
+                                                </span>
+                                                <% } else if(defectsChange==0) { %>
+                                                    <span class="text-secondary text-sm font-weight-bolder">
+                                                        -
+                                                    </span>
+                                                    <% } else{ %>
+                                                        <span class="text-light text-sm font-weight-bolder">
+                                                            <%= defectsChange %>
+                                                        </span>
+                                                        <% } %>%>
                                 </h5>
                             </div>
                         </div>
@@ -75,7 +106,24 @@
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">총 생산량</p>
                                 <h5 class="font-weight-bolder mb-0" id="total">
                                     <%= prodData.length %>
-                                        <!-- <span class="text-success text-sm font-weight-bolder">+5%</span> -->
+                                        <span id="total_percent">
+                                            <% if (totalChange> 0) { %>
+                                                <span class="text-success text-sm font-weight-bolder">+<%= totalChange %>
+                                                        %</span>
+                                                <% } else if (totalChange < 0) { %>
+                                                    <span class="text-danger text-sm font-weight-bolder">
+                                                        <%= totalChange %>%
+                                                    </span>
+                                                    <% } else if(totalChange==0) { %>
+                                                        <span class="text-secondary text-sm font-weight-bolder">
+                                                            -
+                                                        </span>
+                                                        <% } else{ %>
+                                                            <span class="text-light text-sm font-weight-bolder">
+                                                                <%= totalChange %>
+                                                            </span>
+                                                            <% } %>%>
+                                        </span>
                                 </h5>
                             </div>
                         </div>
@@ -101,7 +149,7 @@
                         <div class="col-lg-12">
                             <div class="d-flex flex-column h-100" style=" margin-bottom: 0.5rem;">
                                 <div class="process_status">
-                                    <img src="/image/new_view.png" class="img process_default_img"></img>
+                                    <img src="/image/final_view.png" class="img process_default_img"></img>
                                     <div class='process_unit process_unit_1'>
                                         <img src="/image/work_cell_2.png"></img>
                                     </div>
@@ -277,9 +325,11 @@
                             <h5>CCTV</h5>
                         </div>
                         <div class="col-lg-6 col-5 my-auto text-end"><span style="cursor: pointer;"
-                                onclick="refreshPage();">크게 보기</span>
+                                onclick="openPopupCCTV();">크게 보기</span>
                         </div>
-
+                        <!-- <div class="col-lg-6 col-5 my-auto text-end"><span style="cursor: pointer;"
+                                onclick="refreshPage() ;">크게 보기</span>
+                        </div> -->
                     </div>
                 </div>
                 <div class="card-body p-3">

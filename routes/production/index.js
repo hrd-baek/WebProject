@@ -6,8 +6,8 @@ const moment = require("moment");
 
 router.get('/list', (req, res) => {
 
-    let startDate = common.getToday() + ' 00:00:00'
-    let endDate = common.getToday() + ' 23:59:59'
+    let startDate = common.getDate(0)  + ' 00:00:00'
+    let endDate = common.getDate(0) + ' 23:59:59'
     var sql = 'SELECT * FROM module WHERE finish_time between ?  AND ? order by finish_time ;';
     var values = [startDate, endDate];
 
@@ -55,8 +55,8 @@ router.post('/list/cell', (req, res) => {
 
 
 router.get('/defects', (req, res) => {
-    let startDate = common.getToday() + ' 00:00:00'
-    let endDate = common.getToday() + ' 23:59:59'
+    let startDate = common.getDate(0)  + ' 00:00:00'
+    let endDate = common.getDate(0)  + ' 23:59:59'
     var sql = 'SELECT * FROM module_defects md left join module m on md.module_id = m.module_id WHERE occur_time between ?  AND ? order by occur_time ;';
     var values = [startDate, endDate];
 
