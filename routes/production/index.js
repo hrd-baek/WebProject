@@ -5,7 +5,7 @@ const common = require('../../src/private/common.js');
 
 router.get('/list', (req, res) => {
 
-    let startDate = common.getDate(0)  + ' 00:00:00'
+    let startDate = common.getDate(0) + ' 00:00:00'
     let endDate = common.getDate(0) + ' 23:59:59'
     var sql = 'SELECT * FROM module WHERE finish_time between ?  AND ? order by finish_time ;';
     var values = [startDate, endDate];
@@ -43,19 +43,25 @@ router.post('/list', (req, res) => {
 })
 
 router.post('/list/cell', (req, res) => {
-    let moduleId = req.body.moduleId;
-    var sql = "select * from module_stacking ms left join stacking s on ms.stacking_id = s.stacking_id where ms.module_id = ?;";
+    let moduleId = req.body.moduleId.trim();
+    console.log(moduleId);
+    var sql = `SELECT *
+    FROM module_stacking ms
+    LEFT JOIN stacking s ON ms.stacking_id = s.stacking_id
+    LEFT JOIN cell c ON ms.stacking_id = c.stacking_id
+    WHERE ms.module_id = ?; `;
+
     var values = [moduleId];
     db.query(sql, values, (error, result) => {
         if (error) throw error;
+        // console.log(result);
         res.json(result);
     });
 })
 
-
 router.get('/defects', (req, res) => {
-    let startDate = common.getDate(0)  + ' 00:00:00'
-    let endDate = common.getDate(0)  + ' 23:59:59'
+    let startDate = common.getDate(0) + ' 00:00:00'
+    let endDate = common.getDate(0) + ' 23:59:59'
     var sql = 'SELECT * FROM module_defects md left join module m on md.module_id = m.module_id WHERE occur_time between ?  AND ? order by occur_time ;';
     var values = [startDate, endDate];
 

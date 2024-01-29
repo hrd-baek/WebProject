@@ -24,6 +24,9 @@ function newTable(obj, data) {
             { data: 'start_time', title: '생산 시작 일시' },
             { data: 'finish_time', title: '생산 완료 일시' },
         ],
+        createdRow: function (row, data, dataIndex, full) {
+            $(row).attr('id', data.module_id);
+        },
         columnDefs: [
             {
                 targets: [1], render: function (data, type, row) {
@@ -32,7 +35,9 @@ function newTable(obj, data) {
             },
             {
                 targets: [2], render: function (data, type, row) {
-                    return `<span class="badge badge-sm bg-secondary" onclick="getCellData(this)" style="cursor :pointer">Click</span>`;
+                    // return `<span class="badge badge-sm bg-secondary" onclick="getCellData(this)" style="cursor :pointer">Click</span>`;
+
+                    return `<span class="badge badge-sm bg-secondary" onclick="getCellData(this)" id = "${row.module_id}" style="cursor:pointer">Click</span>`;
                 }
             },
             {

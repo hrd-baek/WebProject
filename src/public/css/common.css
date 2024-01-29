@@ -31,3 +31,6 @@ button {
     background-color: var(--primary-color) !important;
 }
 
+.navbar-vertical.navbar-expand-xs .navbar-collapse{
+    height : calc(100vh - 290px) !important;
+}

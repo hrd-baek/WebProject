@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-    <canvas></canvas>
+    <canvas style="width: 100%;"></canvas>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -22,7 +22,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
 <script>
-    var client = new WebSocket('ws://192.168.1.117:9900');
+    var client = new WebSocket('ws://192.168.0.94:9900');
     var canvas = document.querySelector('canvas');
     var player = new jsmpeg(client, {
         canvas: canvas

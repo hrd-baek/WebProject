@@ -51,7 +51,7 @@ function refreshPage() {
             $('#defective_quality').html(`${def} <span id="def_percent"> </span>`);
             $('#total').html(`${tot} <span id="total_percent"> </span>`);
             refreshPercentage($('#' + fairId), prodChange);
-            refreshPercentage($('#' + defId), defectsChange);
+            refreshConPercentage($('#' + defId), defectsChange);
             refreshPercentage($('#' + totId), totalChange);
 
             var newDefectTable = "";
@@ -148,7 +148,20 @@ function refreshPercentage(obj, change) {
     } else {
         str = `<span class="text-light text-sm font-weight-bolder"> NaN </span>`
     }
-    console.log(str);
-    console.log(obj)
+    obj.html(str);
+}
+
+function refreshConPercentage(obj, change) {
+    let str = "";
+    console.log(change)
+    if (change > 0) {
+        str = `<span class="text-danger text-sm font-weight-bolder">+${change}% </span>`
+    } else if (change < 0) {
+        str = `<span class="text-success text-sm font-weight-bolder"> ${change}% </span>`
+    } else if (change == 0) {
+        str = `<span class="text-secondary text-sm font-weight-bolder"> - </span>`
+    } else {
+        str = `<span class="text-light text-sm font-weight-bolder"> NaN </span>`
+    }
     obj.html(str);
 }

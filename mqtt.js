@@ -21,13 +21,14 @@ let dataCheckList = { lastModule: "", stacking: false, welding: false, barcode: 
 client.on('connect', () => {
     //mqtt가 연결되어있는지 확인
     console.log("mqtt connected :", client.connected, ", topic :", topic_array);
-    getLastModule();
+
     //topic 구독
     client.subscribe(topic_array); //topic 구독
     //구독해놓은 메시지가 들어오면 실행
-
+    getLastModule();
     client.on("message", (topic, message) => {
         let data = JSON.parse(message);
+        // console.log(data);
         if (topic == topic_m) {
             if (data.M8186 && dataCheckList.lastModule == "") {
                 createModule();
@@ -41,41 +42,37 @@ client.on('connect', () => {
                 //         setModuleStorage();
                 //     }
                 // }
-                if (data.M804) {
-                    if (dataCheckList.storage == false) {
-                        setModuleStorage();
-                    }
-                }
             }
         }
         if (dataCheckList.lastModule != "") {
             if (topic == topic_barcode) {
-                if (dataCheckList.barcode == false) {
-                    var type = data.barcode.substr(0, 3).toString();
-                    var voltTemp = parseInt(data.barcode.substr(3, 2));
-                    var volt = 0;
-                        console.log(type, voltTemp);
-                    if (type == '752' || type == '491' || type == '251') {
-                        if (type == '752') {
-                            volt = voltTemp * 2;
-                            if (volt < 30 || volt > 70) {
-                                insertModuleDefects("전압 이상");
-                            }
-                        } else if (type == '491') {
-                            volt = voltTemp * 10
-                            if (volt < 70 || volt > 90) {
-                                insertModuleDefects("전압 이상");
-                            }
-                        } else if (type == '251') {
-                            volt = voltTemp;
-                            if (volt < 20 || volt > 30) {
-                                insertModuleDefects("전압 이상");
-                            }
+                // if (dataCheckList.barcode == false) {
+
+                // }
+                var type = data.barcode.substr(0, 3).toString();
+                var voltTemp = parseInt(data.barcode.substr(3, 2));
+                var volt = 0;
+                console.log(type, voltTemp);
+                if (type == '752' || type == '491' || type == '251') {
+                    if (type == '752') {
+                        volt = voltTemp * 2;
+                        if (volt < 30 || volt > 70) {
+                            setModuleDefects("전압 이상");
                         }
-                        insertBarcode('module-'+type, volt);
-                    } else {
-                        insertModuleDefects("바코드 에러");
+                    } else if (type == '491') {
+                        volt = voltTemp * 10
+                        if (volt < 70 || volt > 90) {
+                            setModuleDefects("전압 이상");
+                        }
+                    } else if (type == '251') {
+                        volt = voltTemp;
+                        if (volt < 20 || volt > 30) {
+                            setModuleDefects("전압 이상");
+                        }
                     }
+                    insertBarcode('module-' + type, volt);
+                } else {
+                    setModuleDefects("바코드 에러");
                 }
             }
             if (topic == topic_welding) {
@@ -83,9 +80,15 @@ client.on('connect', () => {
                     if (data.M802) {
                         setWeldingDefects(false);
                     }
-                    else {
+                    else if (data.M803) {
                         setWeldingDefects(true);
                         insertModuleDefects("용접 불량");
+                    }
+                }
+
+                if (data.M808) {
+                    if (dataCheckList.storage == false) {
+                        setModuleStorage();
                     }
                 }
             }
@@ -128,6 +131,20 @@ function setWeldingDefects(bool) {
     });
 }
 
+
+function setModuleDefects(type) {
+    var sql = `SELECT * FROM module_defects where ( type = '전압 이상' or type ='바코드 에러') and module_id = ?;`;
+    var values = [dataCheckList.lastModule];
+    db.query(sql, values, (error, result) => {
+        if (error) throw error;
+        if (result.length == 0) {
+            insertModuleDefects(type)
+        }
+        // console.log('insert module defecs ' + type + ' : ' + dataCheckList.lastModule);
+    });
+}
+
+
 function insertModuleDefects(type) {
     var sql = 'insert module_defects values(0,?,?,now());';
     var values = [dataCheckList.lastModule, type];
@@ -168,8 +185,9 @@ function insertModuleStacking(res) {
 function createModule() {
     var sql = 'SELECT RIGHT(module_id, 12) as module_id, start_time, finish_time FROM module ORDER BY module_id DESC LIMIT 1;';
     db.query(sql, (error, result) => {
-        if (error) throw error;
-        if (result.length > 0) {
+        if (error) {
+            console.error('Error SELECT module:', error);
+        } else if (result.length > 0) {
             if (result[0].finish_time == null) {
                 return;
             } else {
@@ -197,9 +215,12 @@ function insertModule(day, number) {
     var values = [newModule];
 
     db.query(sql, values, (error, result) => {
-        if (error) throw error;
-        console.log('insert module : ' + newModule);
-        resetDataCheckList(newModule);
+        if (error) {
+            console.error('Error inserting module:', error);
+        } else {
+            console.log('Inserted module: ' + newModule);
+            resetDataCheckList(newModule);
+        }
     });
 }
 

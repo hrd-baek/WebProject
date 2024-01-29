@@ -34,19 +34,17 @@ router.get('/', (req, res) => {
       let yProdData = result[2][0].module_count - yDefData;
       let yTotalData = result[2][0].module_count;
 
-      let tDefData = result[1][0].length > 0 ? result[1][0].distinct_module_count : 0;
+      let tDefData = result[1].length == 0 ? 0 : (result[1][0].length > 0 ? result[1][0].distinct_module_count : 0);
       let tProdData = result[0].length - tDefData;
       let tTotalData = result[0].length;
-
       let productionDifference = tProdData - yProdData;
       let prodPercentageChange = ((productionDifference / yProdData) * 100).toFixed(1);
-
       let defectsDifference = tDefData - yDefData;
-      let defectsPercentageChange = ((defectsDifference / yDefData) * 100).toFixed(1);
+      let defectsPercentageChange = (parseFloat(defectsDifference / yDefData) * 100).toFixed(1);
 
       let totalDifference = tTotalData - yTotalData;
       let totalPercentageChange = ((totalDifference / yTotalData) * 100).toFixed(1);
-
+      
       var data = {
         prodData: result[0],
         defectsData: result[1],

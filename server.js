@@ -48,7 +48,7 @@ stream = new Stream({
 })
 stream2 = new Stream({
   name: 'name2',
-  streamUrl: 'rtsp://asdf123:asdf123@192.168.1.111/stream1',
+  streamUrl: 'rtsp://qwe123:qwe123@192.168.0.101/stream1',
   wsPort: 9900,
   ffmpegOptions: { // options ffmpeg flags
     '-stats': '', // an option with no neccessary value uses a blank string

@@ -8,6 +8,8 @@ var mqtt_port = "8000";
 var mqtt_clientId = "clientID-" + parseInt(Math.random() * 100); // 랜덤 클라이언트 ID 
 var mqtt_topic_x = "chn/final/project/4/x";
 var mqtt_topic_m = "chn/final/project/4/m";
+var mqtt_topic_w = "chn/final/project/4/welding";
+// var topic_array = [mqtt_topic_x, mqtt_topic_m, mqtt_topic_w];
 
 mqttClient = new Paho.MQTT.Client(mqtt_host, Number(mqtt_port), mqtt_clientId);
 
@@ -25,6 +27,7 @@ function onConnect() {
 
     mqttClient.subscribe(mqtt_topic_x);
     mqttClient.subscribe(mqtt_topic_m);
+    mqttClient.subscribe(mqtt_topic_w);
 }
 
 // 연결 실패 시 실행되는 function
@@ -48,7 +51,6 @@ function onMessageArrived(message) {
 
     const json = message.payloadString;
     const obj = JSON.parse(json);
-
     if (message.destinationName == mqtt_topic_m) {
         if (obj.M8186) {
             processVisible(true, $(".process_unit_2"));
@@ -87,12 +89,21 @@ function onMessageArrived(message) {
             processStatusStart('process_loading');
         }
 
-        if (obj.M8132) {
+        if (obj.M8127) {
             processVisible(true, $(".process_unit_2"));
             document.querySelector(".process_unit_2").classList.add("go_top_2");
         }
 
-        if (obj.M8131 || obj.M8119) {
+        // if (obj.M8131 || obj.M8119) {
+        //     processVisible(true, $(".process_unit_2"));
+        //     $(".process_unit_2").removeClass('go_con_1 go_left_1 go_left_2 go_bottom_1 go_top_1 go_left_3 go_top_2');
+        //     processVisible(false, $(".process_unit_2"));
+        //     processStatusEnd('process_loading');
+        //     refreshPage();
+        // }
+    }
+    if (message.destinationName == mqtt_topic_w) {
+        if (obj.M808) {
             processVisible(true, $(".process_unit_2"));
             $(".process_unit_2").removeClass('go_con_1 go_left_1 go_left_2 go_bottom_1 go_top_1 go_left_3 go_top_2');
             processVisible(false, $(".process_unit_2"));
@@ -103,7 +114,7 @@ function onMessageArrived(message) {
 
     if (message.destinationName == mqtt_topic_x) {
         processVisible(obj.X2, $(".process_unit_1"));
-        storageVisible(obj.X24,  $(".storage_good .storage_work_3"));
+        storageVisible(obj.X24, $(".storage_good .storage_work_3"));
         storageVisible(obj.X25, $(".storage_good .storage_work_2"));
         storageVisible(obj.X26, $(".storage_good .storage_work_1"));
         storageVisible(obj.X27, $(".storage_defects .storage_work_3"));

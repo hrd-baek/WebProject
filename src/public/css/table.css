@@ -29,23 +29,28 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td.dtr-control:before {
 }
 
 #defects_list_table tbody tr td,
-#production_list_table tbody tr td {
+#production_list_table tbody tr td,
+#modal_cell_table tbody tr td {
   box-shadow: none;
 }
 
 #defects_list_table tbody tr.even td,
-#production_list_table tbody tr.even td {
+#production_list_table tbody tr.even td,
+#modal_cell_table tbody tr.even td {
   background: rgb(184 179 179 / 5%);
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
 
   #production_list_table th,
   #production_list_table td,
   #defects_list_table th,
-  #defects_list_table td {
+  #defects_list_table td,
+  #modal_cell_table th,
+  #modal_cell_table td {
     text-align: center;
   }
 
 }
+

@@ -37,21 +37,19 @@
                         </thead>
                         <tbody>
                             <% for(var i=0; i<tableData.length; i++){ %>
-                                <tr>
+                                <tr id=<%=tableData[i].module_id %>>
                                     <td>
                                         <%= tableData[i].module_id %>
                                     </td>
 
                                     <td>
 
-                                        <%= tableData[i].module_type_id==null ? '미분류' :
-                                        tableData[i].module_type_id %>
+                                        <%= tableData[i].module_type_id==null ? '미분류' : tableData[i].module_type_id %>
                                     </td>
 
                                     <td>
-                                        <!-- <span class="badge badge-sm bg-secondary" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop" style="cursor :pointer">Click</span> -->
                                         <span class="badge badge-sm bg-secondary" onclick="getCellData(this)"
+                                            id=<%=tableData[i].module_id %>
                                             style="cursor :pointer">Click</span>
                                     </td>
 
@@ -60,7 +58,7 @@
                                     </td>
 
                                     <td>
-                                        <%= tableData[i].voltage==null ? '미측정' : tableData[i].voltage +' V' %> 
+                                        <%= tableData[i].voltage==null ? '미측정' : tableData[i].voltage +' V' %>
                                     </td>
 
                                     <td>
@@ -78,18 +76,34 @@
 
 
         </div>
+
     </div>
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cell 정보</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">셀 정보</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    모듈 ~~에 포함된 셀은 ~~ 입니다.
+                    <h5> </h5>
+                    <table id="modal_cell_table" class="display nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>스태킹 번호</th>
+                                <th>셀 번호</th>
+                                <th>셀 이물질 정도</th>
+                                <th>표면 결함 정도</th>
+                                <th>전압</th>
+                                <th>스태킹 층수</th>
+                                <th>스태킹 종료 시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
@@ -101,10 +115,40 @@
 <!-- <script src="/js/table.js" defer></script> -->
 <script src="/js/list.js" defer></script>
 <script>
-    function getCellData(element) {
-        var row = element.closest('tr');
-        var moduleID = row.querySelector('td:first-child').innerText;
+    function newModalTable(obj, data) {
+        if ($.fn.DataTable.isDataTable('#modal_cell_table')) {
+            console.log($.fn.DataTable);
+            obj.DataTable().destroy();
+        }
+        var table = $('#modal_cell_table').DataTable({
+            columns: [
+                { data: 'stacking_id', title: '스태킹 번호' },
+                { data: 'cell_id', title: '셀 번호' },
+                { data: 'contain', title: '셀 이물질 정도' },
+                { data: 'surface', title: '표면 결함 정도' },
+                { data: 'voltage', title: '전압' },
+                { data: 'floar', title: '스태킹 층수' },
+                { data: 'stack_fin_time', title: '스태킹 완료 시간' }
+            ],
+            columnDefs: [
+            ],
+            lengthChange: false,
+            searching: false,
+            responsive: true,
+            pageLength: 15,
+            data: data,
+            language: language,
+            deferRender: true,
+            destroy: true,
+            rowId: "title",
+        });
+    }
 
+
+    function getCellData(element) {
+        var moduleID = element.id;
+        // var moduleID = row.id;
+        // console.log(row)
         $.ajax({
             url: "/production/list/cell",
             type: "POST",
@@ -112,17 +156,16 @@
             dataType: "json",
             data: { moduleId: moduleID },
             success: function (res) {
+                $('#staticBackdropLabel').text(`셀 정보 (${moduleID})`);
+                newModalTable($('#modal_cell_table'), res);
                 $('#staticBackdrop').modal('show');
-
-                var str = "";
-                for (var i = 0; i < res.length; i++) {
-                    str += res[i].stacking_id;
-                }
-                $('#staticBackdrop .modal-body').html(str);
             },
             error: function (xhr) {
                 alert(xhr);
             }
         });
     }
+
+    $('#staticBackdrop').off('shown.bs.modal').on('shown.bs.modal', function (e) { $(window).trigger('resize'); });
+
 </script>

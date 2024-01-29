@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="fa fa-certificate text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="fa fa-thumbs-up text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -70,10 +70,10 @@
                                     <%= defectsData.length> 0 ? defectsData[0].distinct_module_count : 0 %>
 
                                         <% if (defectsChange> 0) { %>
-                                            <span class="text-success text-sm font-weight-bolder">+<%= defectsChange %>
+                                            <span class="text-danger  text-sm font-weight-bolder">+<%= defectsChange %>
                                                     %</span>
                                             <% } else if (defectsChange < 0) { %>
-                                                <span class="text-danger text-sm font-weight-bolder">
+                                                <span class="text-success text-sm font-weight-bolder">
                                                     <%= defectsChange %>%
                                                 </span>
                                                 <% } else if(defectsChange==0) { %>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-bold-down text-lg opacity-10" aria-hidden="true"></i>
+                                <i class="fa fa-thumbs-down text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
 
                             <li class="timeline-item mb-3">
                                 <span class="timeline-icon" id="process_packaging">
-                                    <i class="fas fa-rocket fa-sm fa-fw" id="process_packaging_i"></i>
+                                    <i class="fa fa-archive fa-sm fa-fw" id="process_packaging_i"></i>
                                 </span>
                                 <h6 class="fw-bold" id="process_packaging_h6">패키징 공정</h6>
                                 <h5 class="fw-bold" id="process_packaging_h5" style="display: none;">패키징 공정</h5>
@@ -198,7 +198,7 @@
 
                             <li class="timeline-item mb-3">
                                 <span class="timeline-icon" id="process_welding">
-                                    <i class="fas fa-hand-holding-usd fa-sm fa-fw" id="process_welding_i"></i>
+                                    <i class="fas fa-bolt fa-sm fa-fw" id="process_welding_i"></i>
                                 </span>
                                 <h6 class="fw-bold" id="process_welding_h6">용접 공정</h6>
                                 <h5 class="fw-bold" id="process_welding_h5" style="display: none;">용접 공정</h5>
@@ -209,7 +209,8 @@
 
                             <li class="timeline-item  mb-3">
                                 <span class="timeline-icon" id="process_inspection">
-                                    <i class="fas fa-users fa-sm fa-fw" id="process_inspection_i"></i>
+                                    <i class=""></i>
+                                    <i class="fa fa-search fa-sm fa-fw " id="process_inspection_i"></i>
                                 </span>
                                 <h6 class="fw-bold" id="process_inspection_h6">검사 공정</h6>
                                 <h5 class="fw-bold" id="process_inspection_h5" style="display: none;">검사 공정</h5>
@@ -220,7 +221,7 @@
 
                             <li class="timeline-item mb-3">
                                 <span class="timeline-icon process-icon-5" id="process_loading">
-                                    <i class="fas fa-money-bill-wave fa-sm fa-fw" id="process_loading_i"></i>
+                                    <i class="fas fa-warehouse fa-xs fa-fw" id="process_loading_i"></i>
                                 </span>
                                 <h6 class="fw-bold" id="process_loading_h6">적재 공정</h6>
                                 <h5 class="fw-bold" id="process_loading_h5" style="display: none;">적재 공정</h5>
@@ -428,4 +429,3 @@
 <script src="/js/mqtt.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
 <script src="/js/dashboard.js" defer></script>
-<!-- <script src="/js/dashboard-socket.js" defer></script> -->
